@@ -1,4 +1,6 @@
 export function Footer() {
+  const baseUrl = import.meta.env.BASE_URL
+
   return (
     <footer className="border-t border-black/10 bg-black/[0.03] py-10 dark:border-white/10 dark:bg-black/20">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -6,12 +8,12 @@ export function Footer() {
           <div className="flex items-center gap-3">
             <span className="grid h-10 w-10 place-items-center overflow-hidden rounded-full bg-black/5 dark:bg-white/10">
               <img
-                src="/logo.png"
+                src={`${baseUrl}logo.png`}
                 alt="Rajarata Exports logo"
                 className="h-full w-full object-contain"
                 loading="lazy"
                 onError={(e) => {
-                  e.currentTarget.src = '/logo-placeholder.svg'
+                  e.currentTarget.src = `${baseUrl}logo-placeholder.svg`
                 }}
               />
             </span>

@@ -112,6 +112,7 @@ const links = [
 export function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const baseUrl = import.meta.env.BASE_URL
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -132,12 +133,12 @@ export function Navbar() {
           <a href="#top" className="flex items-center gap-2">
             <span className="relative grid h-9 w-9 place-items-center overflow-hidden rounded-full bg-black/5 dark:bg-white/10">
               <img
-                src="/logo.png"
+                src={`${baseUrl}logo.png`}
                 alt="Rajarata Exports logo"
                 className="h-full w-full object-contain"
                 loading="eager"
                 onError={(e) => {
-                  e.currentTarget.src = '/logo-placeholder.svg'
+                  e.currentTarget.src = `${baseUrl}logo-placeholder.svg`
                 }}
               />
             </span>
