@@ -13,10 +13,10 @@ export const signatureItems: MenuItem[] = [
     gradient: 'from-amber-300 via-yellow-400 to-lime-400',
   },
   {
-    name: 'Red Papaya',
-    description: 'Red papaya selected by maturity and quality for consistent supply and arrival condition.',
+    name: 'Green Papaya',
+    description: 'Green papaya selected for maturity and quality, packed for consistency and arrival condition.',
     tag: 'Fresh produce',
-    gradient: 'from-orange-400 via-rose-500 to-fuchsia-500',
+    gradient: 'from-lime-300 via-emerald-400 to-teal-400',
   },
   {
     name: 'Tapioca Products',

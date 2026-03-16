@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" fill="none">
+  <title>King coconut pencil sketch</title>
+  <defs>
+    <filter id="paper" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="noise" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.55  0 0 0 0 0.55  0 0 0 0 0.55  0 0 0 0.12 0" result="grain" />
+      <feBlend in="SourceGraphic" in2="grain" mode="multiply" />
+    </filter>
+  </defs>
+
+  <!-- Pencil outline -->
+  <g filter="url(#paper)" stroke="#0f172a" stroke-opacity="0.72" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Coconut body (slightly asymmetrical) -->
+    <path d="M219 64
+             C170 64 126 101 114 154
+             C100 216 121 303 169 342
+             C195 364 226 370 256 362
+             C305 349 340 296 344 227
+             C347 160 305 64 219 64Z" />
+
+    <!-- Secondary "sketch" line for hand-drawn feel -->
+    <path d="M222 69
+             C176 69 136 105 125 154
+             C112 213 132 296 177 334
+             C201 354 229 360 255 353
+             C299 342 331 292 334 230
+             C337 168 301 69 222 69Z"
+          stroke-opacity="0.32" />
+
+    <!-- Top cap + stem -->
+    <path d="M190 86 C205 72 229 66 252 73 C269 78 281 89 286 102" />
+    <path d="M262 66 C270 50 285 40 305 39" />
+    <path d="M305 39 C296 46 292 56 290 69" stroke-opacity="0.35" />
+
+    <!-- Natural grooves -->
+    <path d="M168 130 C160 160 162 210 175 262 C185 300 200 324 217 337" stroke-opacity="0.45" />
+    <path d="M214 112 C202 142 204 204 216 262 C226 309 245 340 268 350" stroke-opacity="0.42" />
+    <path d="M258 118 C252 150 256 206 270 258 C285 314 309 343 326 344" stroke-opacity="0.40" />
+
+    <!-- Highlight contour line -->
+    <path d="M150 178 C142 235 158 292 194 322" stroke-opacity="0.30" />
+
+    <!-- Cross-hatching shadow (bottom-left) -->
+    <g stroke-opacity="0.18">
+      <path d="M140 250 L200 312" />
+      <path d="M134 270 L196 334" />
+      <path d="M144 230 L214 304" />
+      <path d="M160 214 L238 300" />
+      <path d="M170 204 L252 296" />
+    </g>
+
+    <!-- Small "pencil" imperfections -->
+    <path d="M139 196 C145 194 150 195 156 199" stroke-opacity="0.25" />
+    <path d="M296 156 C303 160 308 167 312 176" stroke-opacity="0.22" />
+  </g>
+</svg>

@@ -113,6 +113,21 @@ export function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const baseUrl = import.meta.env.BASE_URL
+  const providedLogo = `${baseUrl}image-1773645025257.png`
+
+  const navigateTo = (href: string) => {
+    setOpen(false)
+    if (!href.startsWith('#')) return
+    const id = href.slice(1)
+    const el = document.getElementById(id)
+    if (el) {
+      // scrollIntoView is more reliable than hash-only navigation on some mobile browsers
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      history.replaceState(null, '', href)
+    } else {
+      window.location.hash = href
+    }
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -131,18 +146,27 @@ export function Navbar() {
           }
         >
           <a href="#top" className="flex items-center gap-2">
-            <span className="relative grid h-9 w-9 place-items-center overflow-hidden rounded-full bg-black/5 dark:bg-white/10">
+            <span className="relative grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-black/5 dark:bg-white/10 sm:h-14 sm:w-14">
               <img
                 src={`${baseUrl}logo.png`}
-                alt="Rajarata Exports logo"
-                className="h-full w-full object-contain"
+                alt="Rajarata Plantation Export logo"
+                className="h-full w-full rounded-full object-cover scale-[1.12]"
                 loading="eager"
                 onError={(e) => {
-                  e.currentTarget.src = `${baseUrl}logo-placeholder.svg`
+                  const img = e.currentTarget
+                  const stage = img.dataset.fallbackStage
+                  if (stage === 'provided') {
+                    img.src = `${baseUrl}logo-placeholder.svg`
+                    return
+                  }
+                  img.dataset.fallbackStage = 'provided'
+                  img.src = providedLogo
                 }}
               />
             </span>
-            <span className="text-sm font-black tracking-tight text-slate-900 sm:text-base dark:text-white">Rajarata Exports</span>
+            <span className="text-sm font-black tracking-tight text-slate-900 sm:text-base dark:text-white">
+              Rajarata Plantation Export
+            </span>
           </a>
 
           <nav className="hidden items-center gap-6 md:flex">
@@ -202,7 +226,10 @@ export function Navbar() {
                     <motion.a
                       key={l.href}
                       href={l.href}
-                      onClick={() => setOpen(false)}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        navigateTo(l.href)
+                      }}
                       whileTap={{ scale: 0.98 }}
                       transition={{ type: 'spring', stiffness: 520, damping: 32, mass: 0.35 }}
                       className="group inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-black/5 hover:text-slate-900 dark:text-white/80 dark:hover:bg-white/5 dark:hover:text-white"
@@ -215,7 +242,10 @@ export function Navbar() {
                   ))}
                   <a
                     href="#locations"
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      navigateTo('#locations')
+                    }}
                     className="btn-apple mt-2 inline-flex items-center justify-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-black text-white shadow-sm shadow-black/10 transition-shadow hover:shadow-md dark:bg-white dark:text-black"
                   >
                     Request a quote

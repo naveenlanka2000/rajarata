@@ -18,7 +18,7 @@ function App() {
         <Marquee
           items={[
             'Sri Lankan king coconuts',
-            'Export-grade red papaya',
+            'Export-grade green papaya',
             'Tapioca pearls & starch',
             'Custom packing',
             'Quality inspection',
@@ -38,7 +38,7 @@ function App() {
           }
           subtitle={
             <>
-              We supply king coconuts, red papaya, and tapioca products from Sri Lanka. Share your destination, packing
+              We supply king coconut, green papaya, and tapioca products from Sri Lanka. Share your destination, packing
               requirements, and quantity, and we will respond with availability, lead time, and a quotation.
             </>
           }
@@ -89,17 +89,19 @@ function App() {
           eyebrow="Quality"
           title={
             <>
-              Focused on <span className="text-slate-600 dark:text-white/70">freshness</span>, grading, and export-ready packing.
+              Trusted sourcing, <span className="text-slate-600 dark:text-white/70">export-ready quality</span>.
             </>
           }
-          subtitle="Consistent grading, clear communication, and packing that protects products throughout transit."
+          subtitle="Sustainable practices, fair partnerships, and careful packing that protects products throughout transit."
         >
           <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch">
             <div className="rounded-[2rem] bg-black/[0.03] p-7 dark:bg-white/5">
-              <h3 className="text-xl font-black text-slate-900 dark:text-white">Grading and careful handling</h3>
+              <h3 className="text-xl font-black text-slate-900 dark:text-white">Quality you can rely on</h3>
               <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-white/70">
-                For fresh produce, we grade and pack to reduce damage and maintain quality. For tapioca products, we support
-                bulk supply and retail-ready packing based on your specification.
+                Rajarata Plantation Export (Pvt) Ltd is committed to sustainable agricultural practices and fair trade
+                partnerships, empowering farming communities while delivering the authentic taste of Sri Lanka to global
+                markets. We combine modern export operations with traditional cultivation to ensure consistent quality,
+                nutrition, and natural goodness.
               </p>
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {[
@@ -151,7 +153,7 @@ function App() {
           eyebrow="Contact"
           title={
             <>
-              Contact <span className="text-slate-600 dark:text-white/70">Rajarata Exports</span>.
+              Contact <span className="text-slate-600 dark:text-white/70">Rajarata Plantation Export (Pvt) Ltd</span>.
             </>
           }
           subtitle="Use the details below to request pricing, availability, and shipment options."
@@ -160,23 +162,23 @@ function App() {
             {[
               {
                 name: 'Email',
-                line1: 'sales@yourcompany.com',
+                line1: 'rrpratnayake@gmail.com',
                 line2: 'Response time: 24–48 hours',
-                href: 'mailto:sales@yourcompany.com',
+                href: 'mailto:rrpratnayake@gmail.com',
                 cta: 'Email us',
               },
               {
-                name: 'Phone / WhatsApp',
-                line1: '+94 XX XXX XXXX',
-                line2: 'Mon–Sat (Sri Lanka time)',
-                href: 'tel:+94XXXXXXXXX',
-                cta: 'Call us',
+                name: 'Owner',
+                line1: 'R.R.P. Rathnayake',
+                line2: 'Owner • Rajarata Plantation Export (Pvt) Ltd',
+                href: 'mailto:rrpratnayake@gmail.com',
+                cta: 'Contact owner',
               },
               {
                 name: 'Office',
-                line1: 'Sri Lanka',
-                line2: 'Add your address here',
-                href: 'https://maps.google.com/?q=Sri%20Lanka',
+                line1: 'No. 427/A, Wilimbula Waththa',
+                line2: 'Radawana, Sri Lanka',
+                href: 'https://www.google.com/maps/search/?api=1&query=No.%20427%2FA%2C%20Wilimbula%20Waththa%2C%20Radawana%2C%20Sri%20Lanka',
                 cta: 'View location',
               },
             ].map((loc, idx) => (

@@ -31,7 +31,7 @@ export function Hero() {
             >
               Export partner for
               <span className="block bg-gradient-to-r from-amber-300 via-fuchsia-400 to-sky-400 bg-clip-text text-transparent animate-gradient-pan">
-                King Coconuts, Red Papaya, and Tapioca.
+                King Coconut, Green Papaya, and Tapioca.
               </span>
             </motion.h1>
 
@@ -41,9 +41,9 @@ export function Hero() {
               transition={{ type: 'spring', stiffness: 220, damping: 26, mass: 0.8, delay: 0.08 }}
               className="mt-5 max-w-xl text-pretty text-base leading-relaxed text-slate-600 dark:text-white/70 sm:text-lg"
             >
-              We supply export-grade produce and tapioca products with quality inspection, packing to specification, and
-              shipment coordination. Share your destination and requirements, and we will prepare the appropriate packing
-              and documentation.
+              Rajarata Plantation Export (Pvt) Ltd is a trusted Sri Lankan exporter specializing in premium-quality tropical
+              produce. We work closely with local farmers and suppliers to ensure freshness, consistency, and export-ready
+              standards in every shipment.
             </motion.p>
 
             <motion.div
