@@ -31,21 +31,23 @@ Open `http://localhost:4173/`.
 ## 4) Host settings
 
 ### cPanel / shared hosting
-- Upload `dist/*` into `public_html/` (or a subfolder).
-- Make sure `index.html` is in the folder you are serving.
 
 ### Netlify
-- **Build command:** `npm run build`
-- **Publish directory:** `dist`
 
 ### Vercel
-- **Build command:** `npm run build`
-- **Output directory:** `dist`
 
 ### GitHub Pages
-- Build: `npm run build`
-- Deploy the `dist/` folder to GitHub Pages (via Actions or `gh-pages`).
 
+## GitHub Pages (recommended)
+
+This repo includes a GitHub Actions workflow that builds the Vite app and publishes `modern-site/dist` to GitHub Pages.
+
+1. Push to the `main` branch.
+2. In your GitHub repo go to **Settings → Pages**.
+3. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+4. Go to the **Actions** tab and wait for the **Deploy to GitHub Pages** workflow to finish.
+
+If you see a GitHub Pages error like “must provide an index.html”, it almost always means Pages is pointing at the wrong source (e.g. `/(root)` or a branch folder that doesn’t contain the built site). Using the workflow above fixes that by deploying the correct `dist/` output.
 ## Notes
 
 This project is configured with `base: './'` in `vite.config.ts` so it can be hosted from a subfolder (e.g., `https://domain.com/some-folder/`) without breaking asset paths.
