@@ -115,20 +115,6 @@ export function Navbar() {
   const baseUrl = import.meta.env.BASE_URL
   const providedLogo = `${baseUrl}image-1773645025257.png`
 
-  const navigateTo = (href: string) => {
-    setOpen(false)
-    if (!href.startsWith('#')) return
-    const id = href.slice(1)
-    const el = document.getElementById(id)
-    if (el) {
-      // scrollIntoView is more reliable than hash-only navigation on some mobile browsers
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      history.replaceState(null, '', href)
-    } else {
-      window.location.hash = href
-    }
-  }
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
     onScroll()
@@ -226,10 +212,7 @@ export function Navbar() {
                     <motion.a
                       key={l.href}
                       href={l.href}
-                      onClick={(e) => {
-                        e.preventDefault()
-                        navigateTo(l.href)
-                      }}
+                      onClick={() => setOpen(false)}
                       whileTap={{ scale: 0.98 }}
                       transition={{ type: 'spring', stiffness: 520, damping: 32, mass: 0.35 }}
                       className="group inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-black/5 hover:text-slate-900 dark:text-white/80 dark:hover:bg-white/5 dark:hover:text-white"
@@ -242,10 +225,7 @@ export function Navbar() {
                   ))}
                   <a
                     href="#locations"
-                    onClick={(e) => {
-                      e.preventDefault()
-                      navigateTo('#locations')
-                    }}
+                    onClick={() => setOpen(false)}
                     className="btn-apple mt-2 inline-flex items-center justify-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-black text-white shadow-sm shadow-black/10 transition-shadow hover:shadow-md dark:bg-white dark:text-black"
                   >
                     Request a quote

@@ -34,7 +34,7 @@ export function Section({ id, eyebrow, title, subtitle, className, children }: S
   } as const
 
   return (
-    <section id={id} className={className}>
+    <section id={id} className={`scroll-mt-28 ${className ?? ''}`.trim()}>
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
           className="max-w-2xl"
