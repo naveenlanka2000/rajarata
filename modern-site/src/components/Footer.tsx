@@ -90,7 +90,7 @@ export function Footer() {
               <img
                 src={`${baseUrl}logo.png`}
                 alt="Rajarata Plantation Export logo"
-                className="h-full w-full rounded-full object-cover scale-[1.12]"
+                className="h-full w-full rounded-full object-contain p-2 sm:object-cover sm:p-0 sm:scale-[1.12]"
                 loading="lazy"
                 onError={(e) => {
                   const img = e.currentTarget
