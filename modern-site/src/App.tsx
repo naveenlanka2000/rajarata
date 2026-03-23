@@ -1,11 +1,13 @@
 import './App.css'
 import { motion } from 'framer-motion'
 import { Footer } from './components/Footer'
+import { GalleryCarousel } from './components/GalleryCarousel'
 import { Hero } from './components/Hero'
 import { Marquee } from './components/Marquee'
 import { Navbar } from './components/Navbar'
 import { ProductGrid } from './components/ProductGrid'
 import { Section } from './components/Section'
+import { gallerySlides } from './data/gallerySlides'
 import { buildSteps, signatureItems } from './data/menu'
 
 function App() {
@@ -14,6 +16,11 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <section className="px-4 pb-12 pt-6 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-[1440px]">
+            <GalleryCarousel slides={gallerySlides} />
+          </div>
+        </section>
 
         <Marquee
           items={[
