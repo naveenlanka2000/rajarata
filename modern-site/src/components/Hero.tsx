@@ -13,7 +13,7 @@ export function Hero() {
         {
           key: 'coconut',
           badge: 'Sri Lanka origin | export-grade supply',
-          titleLines: ['Premium Tropical', 'Produce', 'from Sri Lanka.'],
+          titleLines: ['Golden King', 'Coconut', 'from Sri Lanka.'],
           description:
             'Rajarata Plantation Export (Pvt) Ltd supplies premium Sri Lankan produce with consistent quality and careful handling.',
           imageSrc: `${baseUrl}hero-king-coconut-box.png`,
@@ -23,7 +23,7 @@ export function Hero() {
         {
           key: 'papaya',
           badge: 'Red papaya | export-ready packing',
-          titleLines: ['Red Papaya', 'for Export', 'from Sri Lanka.'],
+          titleLines: ['Sun-Ripened', 'Red Papaya', 'for Export.'],
           description:
             'Fresh Sri Lankan red papaya selected, packed, and prepared for export with reliable handling for international buyers.',
           imageSrc: `${baseUrl}hero-papaya-box.png`,
@@ -33,7 +33,7 @@ export function Hero() {
         {
           key: 'pineapple',
           badge: 'Fresh pineapple | export-ready packing',
-          titleLines: ['Fresh Pineapple', 'for Export', 'from Sri Lanka.'],
+          titleLines: ['Sweet Crown', 'Pineapple', 'for Export.'],
           description:
             'Fresh Sri Lankan pineapple packed for export with dependable quality, careful sorting, and shipment-ready presentation.',
           imageSrc: `${baseUrl}hero-pineapple-box.png`,
@@ -43,7 +43,7 @@ export function Hero() {
         {
           key: 'tapioca',
           badge: 'Fresh tapioca | export-ready packing',
-          titleLines: ['Fresh Tapioca', 'for Export', 'from Sri Lanka.'],
+          titleLines: ['Earth-Fresh', 'Tapioca Roots', 'for Export.'],
           description:
             'Fresh Sri Lankan tapioca prepared for export with consistent grading, careful packing, and reliable shipment readiness.',
           imageSrc: `${baseUrl}hero-tapioca-box.png`,
@@ -91,20 +91,20 @@ export function Hero() {
           <motion.div
             key={`${currentSlide.key}-bg`}
             initial={{ opacity: 0, scale: 1.08, filter: 'blur(18px)' }}
-            animate={{ opacity: 0.24, scale: 1, filter: 'blur(0px)' }}
+            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
             exit={{ opacity: 0, scale: 1.04, filter: 'blur(12px)' }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0 -z-[25] overflow-hidden"
           >
             <div
-              className="absolute left-1/2 top-1/2 h-[132vw] w-[198vh] -translate-x-1/2 -translate-y-1/2 rotate-90 bg-contain bg-center bg-no-repeat sm:h-[108%] sm:w-[108%] sm:rotate-0 sm:bg-cover"
+              className="absolute left-1/2 top-1/2 h-[132vw] w-[198vh] -translate-x-1/2 -translate-y-1/2 rotate-90 bg-contain bg-center bg-no-repeat opacity-[0.3] sm:h-[108%] sm:w-[108%] sm:rotate-0 sm:bg-cover dark:opacity-[0.24]"
               style={{ backgroundImage: `url(${currentSlide.backgroundImageSrc})` }}
             />
           </motion.div>
         ) : null}
       </AnimatePresence>
       <div className="pointer-events-none absolute inset-0 -z-20 opacity-[0.45] [background:radial-gradient(circle_at_1px_1px,rgba(15,23,42,.10)_1px,transparent_0)] [background-size:24px_24px] dark:opacity-[0.18]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-white/65 to-transparent dark:from-black/25 dark:to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-white/55 to-transparent dark:from-black/25 dark:to-transparent" />
 
       <div className="mx-auto grid min-h-[calc(82vh-5rem)] w-full max-w-6xl items-center gap-6 px-4 pb-6 sm:min-h-[calc(100vh-7rem)] sm:gap-10 sm:pb-12 sm:px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:gap-12 lg:px-8 xl:gap-16">
         <div className="relative z-10 max-w-2xl py-4 sm:-translate-y-2 sm:py-8 lg:max-w-none lg:-translate-y-8 lg:py-12 xl:-translate-y-10">
