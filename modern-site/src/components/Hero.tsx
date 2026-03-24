@@ -171,7 +171,7 @@ export function Hero() {
           </AnimatePresence>
         </div>
 
-        <div className="pointer-events-none relative order-last mx-auto w-full max-w-[17rem] sm:max-w-[23rem] lg:order-none lg:max-w-none lg:self-center lg:-translate-y-4 xl:-translate-y-8">
+        <div className="pointer-events-none relative order-last mx-auto w-full max-w-[21.5rem] sm:max-w-[26rem] lg:order-none lg:max-w-none lg:self-center lg:-translate-y-4 xl:-translate-y-8">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide.key}
@@ -179,7 +179,7 @@ export function Hero() {
               animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
               exit={{ opacity: 0, x: 160, scale: 0.96 }}
               transition={{ type: 'spring', stiffness: 120, damping: 16, mass: 0.95, delay: 0.12 }}
-              className="relative mx-auto w-full max-w-[30rem] lg:ml-auto lg:mr-0 xl:max-w-[34rem]"
+              className="relative mx-auto w-full max-w-[36rem] lg:ml-auto lg:mr-0 xl:max-w-[38rem]"
             >
               <div className="hero-spotlight-glow" />
               <div className="absolute inset-x-[12%] bottom-[8%] h-16 rounded-full bg-white/8 blur-3xl dark:bg-white/6" />
