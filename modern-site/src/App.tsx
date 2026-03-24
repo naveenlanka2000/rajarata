@@ -1,5 +1,6 @@
 import './App.css'
 import { motion } from 'framer-motion'
+import { ExportProcessSection } from './components/ExportProcessSection'
 import { Footer } from './components/Footer'
 import { GalleryCarousel } from './components/GalleryCarousel'
 import { Hero } from './components/Hero'
@@ -8,7 +9,7 @@ import { Navbar } from './components/Navbar'
 import { ProductGrid } from './components/ProductGrid'
 import { Section } from './components/Section'
 import { gallerySlides } from './data/gallerySlides'
-import { buildSteps, signatureItems } from './data/menu'
+import { signatureItems } from './data/menu'
 
 function App() {
   return (
@@ -62,42 +63,7 @@ function App() {
           <ProductGrid items={signatureItems} />
         </Section>
 
-        <Section
-          id="how"
-          className="py-16 sm:py-20"
-          eyebrow="Export process"
-          title={
-            <>
-              Clear steps. <span className="text-slate-600 dark:text-white/70">Reliable deliveries</span>.
-            </>
-          }
-          subtitle="From sourcing to shipment, we follow a structured process aligned with your requirements."
-        >
-          <div className="grid gap-4 md:grid-cols-2">
-            {buildSteps.map((s, idx) => (
-              <motion.div
-                key={s.title}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{ type: 'spring', stiffness: 240, damping: 28, mass: 0.75, delay: idx * 0.05 }}
-                className="relative overflow-hidden rounded-[1.75rem] bg-black/[0.03] p-6 dark:bg-white/5"
-              >
-                <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_15%,rgba(56,189,248,.22),transparent_45%)]" />
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-white/60">Step {idx + 1}</p>
-                    <p className="mt-2 text-xl font-black tracking-tight text-slate-900 dark:text-white">{s.title}</p>
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-white/70">{s.body}</p>
-                  </div>
-                  <span className="grid h-10 w-10 place-items-center rounded-2xl bg-black/5 text-sm font-black text-slate-900 dark:bg-white/10 dark:text-white">
-                    {idx + 1}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </Section>
+        <ExportProcessSection />
 
         <Section
           id="story"
