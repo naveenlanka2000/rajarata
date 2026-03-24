@@ -73,9 +73,13 @@ export function Hero() {
             animate={{ opacity: 0.24, scale: 1, filter: 'blur(0px)' }}
             exit={{ opacity: 0, scale: 1.04, filter: 'blur(12px)' }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-0 -z-[25] bg-cover bg-center"
-            style={{ backgroundImage: `url(${currentSlide.backgroundImageSrc})` }}
-          />
+            className="absolute inset-0 -z-[25] overflow-hidden"
+          >
+            <div
+              className="absolute left-1/2 top-1/2 h-[115vw] w-[170vh] -translate-x-1/2 -translate-y-1/2 rotate-90 bg-contain bg-center bg-no-repeat sm:left-0 sm:top-0 sm:h-full sm:w-full sm:translate-x-0 sm:translate-y-0 sm:rotate-0 sm:bg-cover"
+              style={{ backgroundImage: `url(${currentSlide.backgroundImageSrc})` }}
+            />
+          </motion.div>
         ) : null}
       </AnimatePresence>
       <div className="pointer-events-none absolute inset-0 -z-20 opacity-[0.45] [background:radial-gradient(circle_at_1px_1px,rgba(15,23,42,.10)_1px,transparent_0)] [background-size:24px_24px] dark:opacity-[0.18]" />
