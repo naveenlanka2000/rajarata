@@ -13,9 +13,9 @@ export function Hero() {
       titleLines: ['Premium Tropical', 'Produce', 'from Sri Lanka.'],
       description:
         'Rajarata Plantation Export (Pvt) Ltd supplies premium Sri Lankan produce with consistent quality and careful handling.',
-      imageSrc: `${baseUrl}hero-side-image.png`,
+      imageSrc: `${baseUrl}hero-king-coconut-box.png`,
       imageInitial: { opacity: 0, y: -180, scale: 0.94 },
-      backgroundImageSrc: `${baseUrl}hero-coconut-bg.png`,
+      backgroundImageSrc: `${baseUrl}hero-king-coconut-bg.png`,
     },
     {
       key: 'papaya',
@@ -25,7 +25,7 @@ export function Hero() {
         'Fresh Sri Lankan red papaya selected, packed, and prepared for export with reliable handling for international buyers.',
       imageSrc: `${baseUrl}hero-papaya-box.png`,
       imageInitial: { opacity: 0, y: -180, scale: 0.94 },
-      backgroundImageSrc: `${baseUrl}gallery-red-papaya.png`,
+      backgroundImageSrc: `${baseUrl}hero-red-papaya-bg.png`,
     },
     {
       key: 'pineapple',

@@ -113,7 +113,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const baseUrl = import.meta.env.BASE_URL
-  const providedLogo = `${baseUrl}image-1773645025257.png`
+  const providedLogo = `${baseUrl}rajarata-logo.png`
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)

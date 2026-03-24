@@ -71,7 +71,7 @@ function IconWhatsApp(props: { className?: string }) {
 
 export function Footer() {
   const baseUrl = import.meta.env.BASE_URL
-  const providedLogo = `${baseUrl}image-1773645025257.png`
+  const providedLogo = `${baseUrl}rajarata-logo.png`
 
   // Update these links with your real profiles.
   const socials = [
