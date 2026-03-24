@@ -1,53 +1,58 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 export function Hero() {
   const baseUrl = import.meta.env.BASE_URL
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
   const slideDurationMs = 6000
+  const preloadedAssetsRef = useRef(new Set<string>())
 
-  const slides = [
-    {
-      key: 'coconut',
-      badge: 'Sri Lanka origin | export-grade supply',
-      titleLines: ['Premium Tropical', 'Produce', 'from Sri Lanka.'],
-      description:
-        'Rajarata Plantation Export (Pvt) Ltd supplies premium Sri Lankan produce with consistent quality and careful handling.',
-      imageSrc: `${baseUrl}hero-king-coconut-box.png`,
-      imageInitial: { opacity: 0, y: -180, scale: 0.94 },
-      backgroundImageSrc: `${baseUrl}hero-king-coconut-bg.png`,
-    },
-    {
-      key: 'papaya',
-      badge: 'Red papaya | export-ready packing',
-      titleLines: ['Red Papaya', 'for Export', 'from Sri Lanka.'],
-      description:
-        'Fresh Sri Lankan red papaya selected, packed, and prepared for export with reliable handling for international buyers.',
-      imageSrc: `${baseUrl}hero-papaya-box.png`,
-      imageInitial: { opacity: 0, y: -180, scale: 0.94 },
-      backgroundImageSrc: `${baseUrl}hero-red-papaya-bg.png`,
-    },
-    {
-      key: 'pineapple',
-      badge: 'Fresh pineapple | export-ready packing',
-      titleLines: ['Fresh Pineapple', 'for Export', 'from Sri Lanka.'],
-      description:
-        'Fresh Sri Lankan pineapple packed for export with dependable quality, careful sorting, and shipment-ready presentation.',
-      imageSrc: `${baseUrl}hero-pineapple-box.png`,
-      imageInitial: { opacity: 0, y: -180, scale: 0.94 },
-      backgroundImageSrc: `${baseUrl}hero-pineapple-bg.png`,
-    },
-    {
-      key: 'tapioca',
-      badge: 'Fresh tapioca | export-ready packing',
-      titleLines: ['Fresh Tapioca', 'for Export', 'from Sri Lanka.'],
-      description:
-        'Fresh Sri Lankan tapioca prepared for export with consistent grading, careful packing, and reliable shipment readiness.',
-      imageSrc: `${baseUrl}hero-tapioca-box.png`,
-      imageInitial: { opacity: 0, y: -180, scale: 0.94 },
-      backgroundImageSrc: `${baseUrl}hero-tapioca-bg.png`,
-    },
-  ] as const
+  const slides = useMemo(
+    () =>
+      [
+        {
+          key: 'coconut',
+          badge: 'Sri Lanka origin | export-grade supply',
+          titleLines: ['Premium Tropical', 'Produce', 'from Sri Lanka.'],
+          description:
+            'Rajarata Plantation Export (Pvt) Ltd supplies premium Sri Lankan produce with consistent quality and careful handling.',
+          imageSrc: `${baseUrl}hero-king-coconut-box.png`,
+          imageInitial: { opacity: 0, y: -180, scale: 0.94 },
+          backgroundImageSrc: `${baseUrl}hero-king-coconut-bg.png`,
+        },
+        {
+          key: 'papaya',
+          badge: 'Red papaya | export-ready packing',
+          titleLines: ['Red Papaya', 'for Export', 'from Sri Lanka.'],
+          description:
+            'Fresh Sri Lankan red papaya selected, packed, and prepared for export with reliable handling for international buyers.',
+          imageSrc: `${baseUrl}hero-papaya-box.png`,
+          imageInitial: { opacity: 0, y: -180, scale: 0.94 },
+          backgroundImageSrc: `${baseUrl}hero-red-papaya-bg.png`,
+        },
+        {
+          key: 'pineapple',
+          badge: 'Fresh pineapple | export-ready packing',
+          titleLines: ['Fresh Pineapple', 'for Export', 'from Sri Lanka.'],
+          description:
+            'Fresh Sri Lankan pineapple packed for export with dependable quality, careful sorting, and shipment-ready presentation.',
+          imageSrc: `${baseUrl}hero-pineapple-box.png`,
+          imageInitial: { opacity: 0, y: -180, scale: 0.94 },
+          backgroundImageSrc: `${baseUrl}hero-pineapple-bg.png`,
+        },
+        {
+          key: 'tapioca',
+          badge: 'Fresh tapioca | export-ready packing',
+          titleLines: ['Fresh Tapioca', 'for Export', 'from Sri Lanka.'],
+          description:
+            'Fresh Sri Lankan tapioca prepared for export with consistent grading, careful packing, and reliable shipment readiness.',
+          imageSrc: `${baseUrl}hero-tapioca-box.png`,
+          imageInitial: { opacity: 0, y: -180, scale: 0.94 },
+          backgroundImageSrc: `${baseUrl}hero-tapioca-bg.png`,
+        },
+      ] as const,
+    [baseUrl],
+  )
   const slideCount = slides.length
 
   useEffect(() => {
@@ -59,6 +64,22 @@ export function Hero() {
       window.clearInterval(interval)
     }
   }, [slideCount, slideDurationMs])
+
+  useEffect(() => {
+    const nextSlide = slides[(activeSlideIndex + 1) % slideCount]
+    const nextAssets = [nextSlide.imageSrc, nextSlide.backgroundImageSrc]
+
+    nextAssets.forEach((src) => {
+      if (preloadedAssetsRef.current.has(src)) {
+        return
+      }
+
+      const image = new Image()
+      image.decoding = 'async'
+      image.src = src
+      preloadedAssetsRef.current.add(src)
+    })
+  }, [activeSlideIndex, slideCount, slides])
 
   const currentSlide = slides[activeSlideIndex]
 
@@ -169,6 +190,7 @@ export function Hero() {
                 className="hero-floating-produce relative w-full object-contain"
                 loading="eager"
                 decoding="async"
+                fetchPriority={activeSlideIndex === 0 ? 'high' : 'auto'}
               />
             </motion.div>
           </AnimatePresence>
