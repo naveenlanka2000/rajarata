@@ -122,17 +122,38 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 1024px)')
+    const syncMenu = (event: MediaQueryListEvent | MediaQueryList) => {
+      if (event.matches) {
+        setOpen(false)
+      }
+    }
+
+    syncMenu(media)
+
+    if (typeof media.addEventListener === 'function') {
+      media.addEventListener('change', syncMenu)
+      return () => media.removeEventListener('change', syncMenu)
+    }
+
+    media.addListener(syncMenu)
+    return () => media.removeListener(syncMenu)
+  }, [])
+
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-6xl px-3 sm:px-5 lg:px-8">
         <div
           className={
-            'pointer-events-auto mt-3 flex items-center justify-between rounded-2xl px-4 py-3 backdrop-blur transition ' +
-            (scrolled ? 'bg-white/70 dark:bg-black/40' : 'bg-white/50 dark:bg-black/20')
+            'pointer-events-auto mt-3 flex items-center justify-between gap-3 rounded-2xl px-3 py-2.5 backdrop-blur transition sm:px-4 sm:py-3 ' +
+            (scrolled
+              ? 'bg-white/78 shadow-[0_14px_40px_-24px_rgba(15,23,42,0.28)] dark:bg-black/55'
+              : 'bg-white/58 dark:bg-black/26')
           }
         >
-          <a href="#top" className="flex items-center gap-2">
-            <span className="relative grid h-12 w-12 place-items-center overflow-hidden rounded-full bg-black/5 dark:bg-white/10 sm:h-14 sm:w-14">
+          <a href="#top" className="flex min-w-0 flex-1 items-center gap-2.5 pr-2 sm:gap-3">
+            <span className="relative grid h-11 w-11 place-items-center overflow-hidden rounded-full bg-black/5 dark:bg-white/10 sm:h-14 sm:w-14">
               <img
                 src={`${baseUrl}logo.png`}
                 alt="Rajarata Plantation Export logo"
@@ -150,12 +171,17 @@ export function Navbar() {
                 }}
               />
             </span>
-            <span className="text-sm font-black tracking-tight text-slate-900 sm:text-base dark:text-white">
-              Rajarata Plantation Export
+            <span className="min-w-0 font-black leading-tight tracking-tight text-slate-900 dark:text-white">
+              <span className="block truncate text-[0.82rem] min-[380px]:text-sm sm:hidden">
+                Rajarata Export
+              </span>
+              <span className="hidden truncate text-sm sm:block lg:text-[0.95rem] xl:text-[1.05rem]">
+                Rajarata Plantation Export
+              </span>
             </span>
           </a>
 
-          <nav className="hidden items-center gap-6 md:flex">
+          <nav className="hidden shrink-0 items-center gap-2.5 xl:gap-3 2xl:gap-4 lg:flex">
             {links.map((l) => (
               <motion.a
                 key={l.href}
@@ -163,7 +189,7 @@ export function Navbar() {
                 whileHover={{ y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: 'spring', stiffness: 500, damping: 30, mass: 0.4 }}
-                className="group relative inline-flex items-center gap-2 text-sm font-semibold text-slate-700 transition-colors hover:text-slate-900 dark:text-white/80 dark:hover:text-white"
+                className="group relative inline-flex items-center gap-1.5 text-sm font-semibold text-slate-700 transition-colors hover:text-slate-900 xl:gap-2 xl:text-[0.95rem] dark:text-white/80 dark:hover:text-white"
               >
                 <motion.span
                   className="grid place-items-center"
@@ -178,22 +204,25 @@ export function Navbar() {
             ))}
             <a
               href="#locations"
-              className="btn-apple inline-flex items-center justify-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-black text-white shadow-sm shadow-black/10 transition-shadow hover:shadow-md dark:bg-white dark:text-black"
+              className="btn-apple inline-flex items-center justify-center rounded-xl bg-slate-900 px-3 py-2 text-sm font-black text-white shadow-sm shadow-black/10 transition-shadow hover:shadow-md xl:px-4 dark:bg-white dark:text-black"
             >
               Request a quote
             </a>
-            <ThemeToggle />
+            <ThemeToggle className="inline-flex items-center justify-center rounded-xl border border-black/10 bg-black/5 px-2.5 py-2 text-sm font-semibold text-slate-900 hover:bg-black/10 xl:px-3 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10" />
           </nav>
 
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            className="md:hidden inline-flex items-center justify-center rounded-xl border border-black/10 bg-black/5 px-3 py-2 text-sm font-semibold text-slate-900 dark:border-white/10 dark:bg-white/5 dark:text-white"
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-          >
-            {open ? 'Close' : 'Menu'}
-          </button>
+          <div className="flex shrink-0 items-center gap-2 lg:hidden">
+            <ThemeToggle className="inline-flex items-center justify-center rounded-xl border border-black/10 bg-black/5 px-2.5 py-2 text-[0.8rem] font-semibold text-slate-900 hover:bg-black/10 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 sm:px-3 sm:text-sm" />
+            <button
+              type="button"
+              onClick={() => setOpen((v) => !v)}
+              className="inline-flex items-center justify-center rounded-xl border border-black/10 bg-black/5 px-2.5 py-2 text-[0.8rem] font-semibold text-slate-900 dark:border-white/10 dark:bg-white/5 dark:text-white sm:px-3 sm:text-sm"
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+            >
+              {open ? 'Close' : 'Menu'}
+            </button>
+          </div>
         </div>
 
         <AnimatePresence>
@@ -206,7 +235,7 @@ export function Navbar() {
               transition={{ duration: 0.25 }}
               className="pointer-events-auto overflow-hidden"
             >
-              <div className="mt-2 rounded-2xl bg-white/80 p-3 backdrop-blur dark:bg-black/50">
+              <div className="mt-2 max-h-[calc(100vh-5.5rem)] overflow-y-auto rounded-2xl border border-black/10 bg-white/88 p-2.5 backdrop-blur dark:border-white/10 dark:bg-black/70 sm:p-3">
                 <div className="flex flex-col">
                   {links.map((l) => (
                     <motion.a
@@ -230,7 +259,6 @@ export function Navbar() {
                   >
                     Request a quote
                   </a>
-                  <ThemeToggle className="mt-2" />
                 </div>
               </div>
             </motion.div>

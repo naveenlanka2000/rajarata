@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-28 sm:pt-32">
+    <section id="top" className="relative overflow-hidden pt-24 sm:pt-32">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-fuchsia-500/30 blur-3xl" />
         <div className="absolute -right-24 top-10 h-80 w-80 rounded-full bg-amber-400/25 blur-3xl" />
@@ -11,13 +11,13 @@ export function Hero() {
       </div>
 
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10">
           <div>
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: 'spring', stiffness: 280, damping: 26, mass: 0.7 }}
-              className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-white/80"
+              className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/5 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-white/80 sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.18em]"
             >
               <span className="h-2 w-2 rounded-full bg-emerald-400" />
               Sri Lanka origin • export-grade supply
@@ -27,7 +27,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: 'spring', stiffness: 240, damping: 26, mass: 0.8, delay: 0.03 }}
-              className="mt-5 text-balance text-5xl font-black tracking-tight text-slate-900 dark:text-white sm:text-6xl lg:text-7xl"
+              className="mt-5 text-balance text-4xl font-black tracking-tight text-slate-900 dark:text-white sm:text-6xl lg:text-7xl"
             >
               Export partner for
               <span className="block bg-gradient-to-r from-amber-300 via-fuchsia-400 to-sky-400 bg-clip-text text-transparent animate-gradient-pan">
@@ -39,7 +39,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ type: 'spring', stiffness: 220, damping: 26, mass: 0.8, delay: 0.08 }}
-              className="mt-5 max-w-xl text-pretty text-base leading-relaxed text-slate-600 dark:text-white/70 sm:text-lg"
+              className="mt-4 max-w-xl text-pretty text-[0.97rem] leading-relaxed text-slate-600 dark:text-white/70 sm:mt-5 sm:text-lg"
             >
               Rajarata Plantation Export (Pvt) Ltd is a trusted Sri Lankan exporter specializing in premium-quality tropical
               produce. We work closely with local farmers and suppliers to ensure freshness, consistency, and export-ready
@@ -54,29 +54,29 @@ export function Hero() {
             >
               <a
                 href="#menu"
-                className="btn-apple inline-flex items-center justify-center rounded-2xl bg-slate-900 px-6 py-3 text-sm font-black text-white shadow-sm shadow-black/10 transition-shadow hover:shadow-md dark:bg-white dark:text-black"
+                className="btn-apple inline-flex w-full items-center justify-center rounded-2xl bg-slate-900 px-6 py-3 text-sm font-black text-white shadow-sm shadow-black/10 transition-shadow hover:shadow-md dark:bg-white dark:text-black sm:w-auto"
               >
                 View products
               </a>
               <a
                 href="#how"
-                className="btn-apple inline-flex items-center justify-center rounded-2xl border border-black/10 bg-black/5 px-6 py-3 text-sm font-black text-slate-900 transition-colors hover:bg-black/10 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                className="btn-apple inline-flex w-full items-center justify-center rounded-2xl border border-black/10 bg-black/5 px-6 py-3 text-sm font-black text-slate-900 transition-colors hover:bg-black/10 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 sm:w-auto"
               >
                 Export process
               </a>
             </motion.div>
 
-            <div className="mt-10 grid max-w-xl grid-cols-3 gap-4 text-slate-600 dark:text-white/70">
+            <div className="mt-8 grid max-w-xl grid-cols-1 gap-3 text-slate-600 dark:text-white/70 min-[480px]:grid-cols-3 sm:mt-10 sm:gap-4">
               <div className="rounded-2xl bg-black/[0.03] p-4 dark:bg-white/5">
-                <p className="text-2xl font-black text-slate-900 dark:text-white">Packing</p>
+                <p className="text-xl font-black text-slate-900 dark:text-white sm:text-2xl">Packing</p>
                 <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em]">export-ready</p>
               </div>
               <div className="rounded-2xl bg-black/[0.03] p-4 dark:bg-white/5">
-                <p className="text-2xl font-black text-slate-900 dark:text-white">Quality</p>
+                <p className="text-xl font-black text-slate-900 dark:text-white sm:text-2xl">Quality</p>
                 <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em]">inspection</p>
               </div>
               <div className="rounded-2xl bg-black/[0.03] p-4 dark:bg-white/5">
-                <p className="text-2xl font-black text-slate-900 dark:text-white">Documentation</p>
+                <p className="text-xl font-black text-slate-900 dark:text-white sm:text-2xl">Documentation</p>
                 <p className="mt-1 text-xs font-semibold uppercase tracking-[0.18em]">export support</p>
               </div>
             </div>
@@ -89,8 +89,8 @@ export function Hero() {
             className="relative"
           >
             <div className="absolute inset-0 -z-10 rounded-[2.5rem] bg-gradient-to-br from-white/10 to-white/0 blur-xl" />
-            <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-black/[0.03] to-black/[0.02] p-6 dark:from-white/10 dark:to-white/5">
-              <div className="flex items-start justify-between">
+            <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-black/[0.03] to-black/[0.02] p-5 dark:from-white/10 dark:to-white/5 sm:rounded-[2.5rem] sm:p-6">
+              <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-600 dark:text-white/70">Featured product</p>
                   <p className="mt-2 text-2xl font-black tracking-tight text-slate-900 dark:text-white">King Coconuts</p>
@@ -114,7 +114,7 @@ export function Hero() {
                 ))}
               </div>
 
-              <div className="mt-6 flex items-center justify-between">
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-sm font-semibold text-slate-600 dark:text-white/70">Quotes based on quantity and destination</p>
                 <a
                   href="#locations"

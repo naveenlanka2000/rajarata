@@ -34,18 +34,18 @@ export function GalleryCarousel({ slides }: GalleryCarouselProps) {
   }, [isPaused])
 
   return (
-    <div className="space-y-6">
+    <div className="relative space-y-6 overflow-hidden">
       <Swiper
         modules={[Autoplay]}
-        slidesPerView={1.08}
-        spaceBetween={8}
-        breakpoints={{
-          640: { slidesPerView: 1.55, spaceBetween: 8 },
-          1024: { slidesPerView: 3, spaceBetween: 8 },
-        }}
-        autoplay={{ delay: 3400, disableOnInteraction: false, pauseOnMouseEnter: true }}
+        slidesPerView="auto"
+        spaceBetween={0}
+        centeredSlides
+        slideToClickedSlide
+        grabCursor
+        loopAdditionalSlides={slides.length * 3}
+        autoplay={{ delay: 3600, disableOnInteraction: false, pauseOnMouseEnter: true, waitForTransition: true }}
         loop
-        speed={950}
+        speed={1300}
         watchSlidesProgress
         onSwiper={(swiper) => {
           swiperRef.current = swiper
@@ -54,11 +54,14 @@ export function GalleryCarousel({ slides }: GalleryCarouselProps) {
         onSlideChange={(swiper) => {
           setActiveIndex(swiper.realIndex)
         }}
-        className="!overflow-visible"
+        className="overflow-hidden [contain:layout_paint] [&_.swiper-slide]:transform-gpu [&_.swiper-wrapper]:will-change-transform [&_.swiper-wrapper]:[transition-timing-function:cubic-bezier(0.22,1,0.36,1)]"
       >
         {slides.map((slide, index) => (
-          <SwiperSlide key={`${slide.title}-${index}`} className="h-auto">
-            <article className="group relative aspect-[4/3] overflow-hidden bg-slate-200 ring-1 ring-black/8 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.35)] dark:ring-white/10">
+          <SwiperSlide
+            key={`${slide.title}-${index}`}
+            className="!h-auto !w-[78vw] min-[480px]:!w-[21rem] md:!w-[22rem] lg:!w-[19rem] xl:!w-[20rem]"
+          >
+            <article className="group relative aspect-[4/3] overflow-hidden border-r border-black/20 bg-slate-200 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.35)] dark:border-white/12">
               <img
                 src={slide.image}
                 alt={slide.title}
@@ -71,16 +74,16 @@ export function GalleryCarousel({ slides }: GalleryCarouselProps) {
                   {slide.brand}
                 </p>
               </div>
-              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 sm:p-6">
+              <div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-3 p-4 sm:flex-row sm:items-end sm:justify-between sm:gap-4 sm:p-6">
                 <div className="max-w-[16rem]">
                   <p className="text-[0.82rem] font-semibold tracking-[0.01em] text-white/82 sm:text-[0.9rem]">
                     {slide.eyebrow}
                   </p>
-                  <h3 className="mt-2 text-[1.65rem] font-black leading-[1.02] tracking-tight text-white sm:text-[2rem]">
+                  <h3 className="mt-2 text-[1.4rem] font-black leading-[1.02] tracking-tight text-white sm:text-[2rem]">
                     {slide.title}
                   </h3>
                 </div>
-                <span className="shrink-0 rounded-full bg-white px-5 py-2.5 text-base font-semibold text-slate-950 shadow-[0_10px_25px_-18px_rgba(255,255,255,0.85)]">
+                <span className="shrink-0 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-950 shadow-[0_10px_25px_-18px_rgba(255,255,255,0.85)] sm:px-5 sm:py-2.5 sm:text-base">
                   {slide.cta}
                 </span>
               </div>
@@ -89,7 +92,7 @@ export function GalleryCarousel({ slides }: GalleryCarouselProps) {
         ))}
       </Swiper>
 
-      <div className="relative flex items-center justify-center">
+      <div className="flex flex-wrap items-center justify-center gap-4 sm:relative sm:flex-nowrap">
         <div className="flex items-center gap-5">
           {slides.map((slide, index) => (
             <button
@@ -112,7 +115,7 @@ export function GalleryCarousel({ slides }: GalleryCarouselProps) {
           onClick={() => setIsPaused((current) => !current)}
           aria-pressed={isPaused}
           aria-label={isPaused ? 'Resume slideshow' : 'Pause slideshow'}
-          className="absolute right-0 grid h-11 w-11 place-items-center rounded-full bg-black/8 text-slate-900 transition-colors hover:bg-black/12 dark:bg-white/10 dark:text-white dark:hover:bg-white/16"
+          className="grid h-11 w-11 place-items-center rounded-full bg-black/8 text-slate-900 transition-colors hover:bg-black/12 dark:bg-white/10 dark:text-white dark:hover:bg-white/16 sm:absolute sm:right-0"
         >
           {isPaused ? <span className="ml-0.5 text-[11px] font-bold">Play</span> : <PauseIcon />}
         </button>

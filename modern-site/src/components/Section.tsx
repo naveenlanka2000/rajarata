@@ -34,7 +34,7 @@ export function Section({ id, eyebrow, title, subtitle, className, children }: S
   } as const
 
   return (
-    <section id={id} className={`scroll-mt-28 ${className ?? ''}`.trim()}>
+    <section id={id} className={`scroll-mt-24 sm:scroll-mt-28 ${className ?? ''}`.trim()}>
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
           className="max-w-2xl"
@@ -53,21 +53,21 @@ export function Section({ id, eyebrow, title, subtitle, className, children }: S
           ) : null}
           <motion.h2
             variants={item}
-            className="mt-3 text-balance text-3xl font-black tracking-tight text-slate-900 dark:text-white sm:text-4xl"
+            className="mt-3 text-balance text-2xl font-black tracking-tight text-slate-900 dark:text-white sm:text-4xl"
           >
             {title}
           </motion.h2>
           {subtitle ? (
             <motion.p
               variants={item}
-              className="mt-3 text-pretty text-base leading-relaxed text-slate-600 dark:text-white/70 sm:text-lg"
+              className="mt-3 text-pretty text-[0.97rem] leading-relaxed text-slate-600 dark:text-white/70 sm:text-lg"
             >
               {subtitle}
             </motion.p>
           ) : null}
         </motion.div>
 
-        {children ? <div className="mt-10">{children}</div> : null}
+        {children ? <div className="mt-8 sm:mt-10">{children}</div> : null}
       </div>
     </section>
   )

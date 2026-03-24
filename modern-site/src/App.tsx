@@ -14,10 +14,10 @@ function App() {
   return (
     <div className="min-h-screen bg-white text-slate-900 dark:bg-ink-950 dark:text-white">
       <Navbar />
-      <main>
+      <main className="overflow-x-hidden">
         <Hero />
-        <section className="px-4 pb-12 pt-6 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-[1440px]">
+        <section className="overflow-x-hidden px-4 pb-12 pt-6 sm:px-6 lg:px-8">
+          <div className="mx-auto w-full max-w-none">
             <GalleryCarousel slides={gallerySlides} />
           </div>
         </section>
