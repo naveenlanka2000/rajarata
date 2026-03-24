@@ -21,6 +21,7 @@ export function GalleryCarousel({ slides }: GalleryCarouselProps) {
   const swiperRef = useRef<SwiperType | null>(null)
   const [activeIndex, setActiveIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const canLoop = slides.length > 1
 
   useEffect(() => {
     const swiper = swiperRef.current
@@ -33,20 +34,31 @@ export function GalleryCarousel({ slides }: GalleryCarouselProps) {
     }
   }, [isPaused])
 
+  if (slides.length === 0) {
+    return null
+  }
+
   return (
-    <div className="relative space-y-6 overflow-hidden">
+    <div className="relative space-y-6">
       <Swiper
         modules={[Autoplay]}
-        slidesPerView="auto"
-        spaceBetween={0}
-        centeredSlides
-        slideToClickedSlide
+        slidesPerView={1.08}
+        spaceBetween={12}
+        breakpoints={{
+          640: { slidesPerView: 1.35, spaceBetween: 14 },
+          960: { slidesPerView: 2.15, spaceBetween: 18 },
+          1280: { slidesPerView: 2.9, spaceBetween: 20 },
+        }}
         grabCursor
-        loopAdditionalSlides={slides.length * 3}
-        autoplay={{ delay: 3600, disableOnInteraction: false, pauseOnMouseEnter: true, waitForTransition: true }}
-        loop
-        speed={1300}
+        autoplay={
+          canLoop ? { delay: 3600, disableOnInteraction: false, pauseOnMouseEnter: true, waitForTransition: true } : false
+        }
+        loop={canLoop}
+        speed={900}
+        watchOverflow
         watchSlidesProgress
+        observer
+        observeParents
         onSwiper={(swiper) => {
           swiperRef.current = swiper
           setActiveIndex(swiper.realIndex)
@@ -54,14 +66,11 @@ export function GalleryCarousel({ slides }: GalleryCarouselProps) {
         onSlideChange={(swiper) => {
           setActiveIndex(swiper.realIndex)
         }}
-        className="overflow-hidden [contain:layout_paint] [&_.swiper-slide]:transform-gpu [&_.swiper-wrapper]:will-change-transform [&_.swiper-wrapper]:[transition-timing-function:cubic-bezier(0.22,1,0.36,1)]"
+        className="!overflow-visible [contain:layout_paint] [&_.swiper-slide]:transform-gpu [&_.swiper-wrapper]:will-change-transform [&_.swiper-wrapper]:[transition-timing-function:cubic-bezier(0.22,1,0.36,1)]"
       >
         {slides.map((slide, index) => (
-          <SwiperSlide
-            key={`${slide.title}-${index}`}
-            className="!h-auto !w-[78vw] min-[480px]:!w-[21rem] md:!w-[22rem] lg:!w-[19rem] xl:!w-[20rem]"
-          >
-            <article className="group relative aspect-[4/3] overflow-hidden border-r border-black/20 bg-slate-200 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.35)] dark:border-white/12">
+          <SwiperSlide key={`${slide.title}-${index}`} className="h-auto">
+            <article className="group relative aspect-[4/3] overflow-hidden rounded-[1.85rem] border border-black/10 bg-slate-200 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.35)] dark:border-white/12">
               <img
                 src={slide.image}
                 alt={slide.title}
@@ -98,7 +107,17 @@ export function GalleryCarousel({ slides }: GalleryCarouselProps) {
             <button
               key={`${slide.title}-dot`}
               type="button"
-              onClick={() => swiperRef.current?.slideToLoop(index)}
+              onClick={() => {
+                const swiper = swiperRef.current
+                if (!swiper) return
+
+                if (canLoop) {
+                  swiper.slideToLoop(index)
+                  return
+                }
+
+                swiper.slideTo(index)
+              }}
               aria-label={`Go to slide ${index + 1}`}
               aria-pressed={index === activeIndex}
               className={`rounded-full transition-all duration-300 ${
@@ -115,6 +134,7 @@ export function GalleryCarousel({ slides }: GalleryCarouselProps) {
           onClick={() => setIsPaused((current) => !current)}
           aria-pressed={isPaused}
           aria-label={isPaused ? 'Resume slideshow' : 'Pause slideshow'}
+          disabled={!canLoop}
           className="grid h-11 w-11 place-items-center rounded-full bg-black/8 text-slate-900 transition-colors hover:bg-black/12 dark:bg-white/10 dark:text-white dark:hover:bg-white/16 sm:absolute sm:right-0"
         >
           {isPaused ? <span className="ml-0.5 text-[11px] font-bold">Play</span> : <PauseIcon />}
