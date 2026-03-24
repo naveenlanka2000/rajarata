@@ -51,7 +51,7 @@ export function GalleryCarousel({ slides }: GalleryCarouselProps) {
         }}
         grabCursor
         autoplay={
-          canLoop ? { delay: 3600, disableOnInteraction: false, pauseOnMouseEnter: true, waitForTransition: true } : false
+          canLoop ? { delay: 6000, disableOnInteraction: false, pauseOnMouseEnter: true, waitForTransition: true } : false
         }
         loop={canLoop}
         speed={900}
@@ -70,7 +70,7 @@ export function GalleryCarousel({ slides }: GalleryCarouselProps) {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={`${slide.title}-${index}`} className="h-auto">
-            <article className="group relative aspect-[4/3] overflow-hidden rounded-[1.85rem] border border-black/10 bg-slate-200 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.35)] dark:border-white/12">
+            <article className="group relative aspect-[4/3] overflow-hidden rounded-none border border-black/10 bg-slate-200 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.35)] dark:border-white/12">
               <img
                 src={slide.image}
                 alt={slide.title}

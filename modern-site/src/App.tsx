@@ -17,7 +17,16 @@ function App() {
       <main className="overflow-x-hidden">
         <Hero />
         <section className="overflow-x-hidden px-4 pb-12 pt-6 sm:px-6 lg:px-8">
-          <div className="mx-auto w-full max-w-none">
+          <div className="mx-auto w-full max-w-6xl">
+            <div className="mb-8 max-w-2xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-white/60">Gallery</p>
+              <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-900 dark:text-white sm:text-4xl">
+                Export Highlights
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-white/70 sm:text-base">
+                A quick look at our produce, packing, quality control, and shipment workflow.
+              </p>
+            </div>
             <GalleryCarousel slides={gallerySlides} />
           </div>
         </section>
