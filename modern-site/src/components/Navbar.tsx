@@ -173,13 +173,13 @@ export function Navbar() {
               ? 'theme-nav-shell-strong'
               : 'theme-nav-shell')
           }
-        >
+          >
           <a href="#top" className="flex min-w-0 flex-1 items-center gap-2.5 pr-2 sm:gap-3">
-            <span className="theme-chip relative grid h-11 w-11 place-items-center overflow-hidden rounded-full sm:h-14 sm:w-14">
+            <span className="theme-chip relative grid h-11 w-11 shrink-0 place-items-center overflow-hidden rounded-full sm:h-14 sm:w-14">
               <img
                 src={`${baseUrl}logo.png`}
                 alt="Rajarata Plantation Export logo"
-                className="h-full w-full rounded-full object-contain p-1.5 sm:object-cover sm:p-0 sm:scale-[1.12]"
+                className="h-full w-full rounded-full object-cover scale-[1.24] sm:scale-[1.12]"
                 loading="eager"
                 onError={(e) => {
                   const img = e.currentTarget
