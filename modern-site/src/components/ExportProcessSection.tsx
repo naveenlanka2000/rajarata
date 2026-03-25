@@ -33,7 +33,7 @@ export function ExportProcessSection() {
       id="how"
       className="scroll-mt-24 overflow-hidden bg-[linear-gradient(180deg,rgba(248,250,252,0.72)_0%,rgba(241,245,249,0.9)_100%)] py-16 dark:bg-[linear-gradient(180deg,rgba(0,0,0,1)_0%,rgba(0,0,0,1)_100%)] sm:scroll-mt-28 sm:py-24"
     >
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="site-shell px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -54,7 +54,7 @@ export function ExportProcessSection() {
           </p>
         </motion.div>
 
-        <div className="mt-12 grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(320px,0.92fr)] lg:gap-12">
+        <div className="mt-12 grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.94fr)] lg:gap-14 xl:grid-cols-[minmax(0,1fr)_minmax(420px,0.92fr)] xl:gap-16">
           <div className="relative">
             <div className="space-y-7 sm:space-y-8">
               {buildSteps.map((step, idx) => (
@@ -93,7 +93,7 @@ export function ExportProcessSection() {
             whileInView={{ opacity: 1, x: 0, rotate: 0 }}
             viewport={{ once: true, margin: '-90px' }}
             transition={{ type: 'spring', stiffness: 170, damping: 24, mass: 0.9 }}
-            className="relative min-h-[30rem] sm:min-h-[38rem] lg:min-h-[44rem]"
+            className="relative min-h-[30rem] sm:min-h-[38rem] lg:min-h-[44rem] xl:min-h-[47rem]"
           >
             {collageCards.map((card, idx) => (
               <motion.article

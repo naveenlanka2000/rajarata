@@ -85,7 +85,7 @@ export function Footer() {
 
   return (
     <footer className="theme-band border-t py-10">
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="site-shell px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
             <span className="theme-chip grid h-16 w-16 place-items-center overflow-hidden rounded-full">

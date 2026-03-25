@@ -72,8 +72,29 @@
 }
 
 @layer utilities {
+  .site-shell {
+    width: min(calc(100% - 2rem), 96rem);
+    margin-inline: auto;
+  }
+
+  @media (min-width: 640px) {
+    .site-shell {
+      width: min(calc(100% - 3rem), 96rem);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .site-shell {
+      width: min(calc(100% - 4.5rem), 96rem);
+    }
+  }
+
+  .section-title-scale {
+    font-size: clamp(2rem, 1.35rem + 1.7vw, 3.45rem);
+  }
+
   .hero-home-title {
-    font-size: clamp(2.75rem, 4.75vw, 4rem) !important;
+    font-size: clamp(2.75rem, 3.1vw + 1.35rem, 5rem) !important;
   }
 
   .hero-premium-bg {

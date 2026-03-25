@@ -48,6 +48,7 @@ export function GalleryCarousel({ slides }: GalleryCarouselProps) {
           640: { slidesPerView: 1.35, spaceBetween: 14 },
           960: { slidesPerView: 2.15, spaceBetween: 18 },
           1280: { slidesPerView: 2.9, spaceBetween: 20 },
+          1536: { slidesPerView: 3.35, spaceBetween: 22 },
         }}
         grabCursor
         autoplay={

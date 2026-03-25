@@ -106,8 +106,8 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-0 -z-20 opacity-[0.45] [background:radial-gradient(circle_at_1px_1px,rgba(15,23,42,.10)_1px,transparent_0)] [background-size:24px_24px] dark:opacity-[0.18]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-white/55 to-transparent dark:from-black/25 dark:to-transparent" />
 
-      <div className="mx-auto grid min-h-[calc(82vh-5rem)] w-full max-w-6xl items-center gap-6 px-4 pb-6 sm:min-h-[calc(100vh-7rem)] sm:gap-10 sm:pb-12 sm:px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:gap-12 lg:px-8 xl:gap-16">
-        <div className="relative z-10 max-w-2xl py-4 sm:-translate-y-2 sm:py-8 lg:max-w-none lg:-translate-y-8 lg:py-12 xl:-translate-y-10">
+      <div className="site-shell grid min-h-[calc(82vh-5rem)] items-center gap-6 px-4 pb-6 sm:min-h-[calc(100vh-7rem)] sm:gap-10 sm:pb-12 sm:px-6 lg:grid-cols-[minmax(0,1.04fr)_minmax(380px,0.96fr)] lg:gap-14 lg:px-8 xl:grid-cols-[minmax(0,1fr)_minmax(430px,0.94fr)] xl:gap-20 2xl:grid-cols-[minmax(0,1fr)_minmax(470px,0.92fr)]">
+        <div className="relative z-10 max-w-2xl py-4 sm:-translate-y-2 sm:py-8 lg:max-w-[44rem] lg:-translate-y-6 lg:py-12 xl:max-w-[48rem] xl:-translate-y-8 2xl:max-w-[52rem] 2xl:-translate-y-10">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide.key}
@@ -120,7 +120,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ type: 'spring', stiffness: 280, damping: 26, mass: 0.7 }}
-                className="hero-frost-card -mt-10 inline-flex max-w-full items-center gap-2 rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-700 dark:text-white/80 sm:-mt-12 sm:w-fit sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.18em] sm:whitespace-nowrap lg:-mt-14"
+                className="hero-frost-card -mt-10 inline-flex max-w-full items-center gap-2 rounded-full px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-700 dark:text-white/80 sm:-mt-12 sm:w-fit sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.18em] sm:whitespace-nowrap lg:-mt-10 xl:-mt-12"
               >
                 <span className="h-2 w-2 rounded-full bg-emerald-400" />
                 {currentSlide.badge}
@@ -171,7 +171,7 @@ export function Hero() {
           </AnimatePresence>
         </div>
 
-        <div className="pointer-events-none relative order-last mx-auto w-full max-w-[21.5rem] sm:max-w-[26rem] lg:order-none lg:max-w-none lg:self-center lg:-translate-y-4 xl:-translate-y-8">
+        <div className="pointer-events-none relative order-last mx-auto w-full max-w-[21.5rem] sm:max-w-[26rem] lg:order-none lg:max-w-none lg:self-center lg:-translate-y-2 xl:-translate-y-4 2xl:-translate-y-6">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide.key}
@@ -179,7 +179,7 @@ export function Hero() {
               animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
               exit={{ opacity: 0, x: 160, scale: 0.96 }}
               transition={{ type: 'spring', stiffness: 120, damping: 16, mass: 0.95, delay: 0.12 }}
-              className="relative mx-auto w-full max-w-[36rem] lg:ml-auto lg:mr-0 xl:max-w-[38rem]"
+              className="relative mx-auto w-full max-w-[36rem] lg:ml-auto lg:mr-0 lg:max-w-[39rem] xl:max-w-[44rem] 2xl:max-w-[48rem]"
             >
               <div className="hero-spotlight-glow" />
               <div className="absolute inset-x-[12%] bottom-[8%] h-16 rounded-full bg-white/8 blur-3xl dark:bg-white/6" />
@@ -198,7 +198,7 @@ export function Hero() {
       </div>
 
       <div className="mt-14">
-        <div className="mx-auto h-px w-full max-w-6xl bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+        <div className="site-shell h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
       </div>
     </section>
   )

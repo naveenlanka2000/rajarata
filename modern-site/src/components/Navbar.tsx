@@ -181,7 +181,7 @@ export function Navbar() {
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
-      <div className="mx-auto w-full max-w-6xl px-3 sm:px-5 lg:px-8">
+      <div className="site-shell px-3 sm:px-5 lg:px-8">
         <div
           className={
             'pointer-events-auto mt-3 flex items-center justify-between gap-3 rounded-2xl px-3 py-2.5 transition sm:px-4 sm:py-3 ' +
