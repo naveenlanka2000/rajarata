@@ -141,6 +141,28 @@ export function Navbar() {
     return () => media.removeListener(syncMenu)
   }, [])
 
+  useEffect(() => {
+    if (!open) {
+      document.body.style.overflow = ''
+      return
+    }
+
+    document.body.style.overflow = 'hidden'
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [open])
+
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
       <div className="mx-auto w-full max-w-6xl px-3 sm:px-5 lg:px-8">
@@ -219,6 +241,7 @@ export function Navbar() {
               className="theme-chip inline-flex items-center justify-center rounded-xl px-2.5 py-2 text-[0.8rem] font-semibold text-slate-900 dark:text-white sm:px-3 sm:text-sm"
               aria-expanded={open}
               aria-controls="mobile-nav"
+              aria-label={open ? 'Close menu' : 'Open menu'}
             >
               {open ? 'Close' : 'Menu'}
             </button>
@@ -227,41 +250,53 @@ export function Navbar() {
 
         <AnimatePresence>
           {open ? (
-            <motion.div
-              id="mobile-nav"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="pointer-events-auto overflow-hidden"
-            >
-              <div className="theme-surface-strong mt-2 max-h-[calc(100vh-5.5rem)] overflow-y-auto rounded-2xl p-2.5 sm:p-3">
-                <div className="flex flex-col">
-                  {links.map((l) => (
-                    <motion.a
-                      key={l.href}
-                      href={l.href}
+            <>
+              <motion.button
+                type="button"
+                aria-label="Close menu overlay"
+                onClick={() => setOpen(false)}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="pointer-events-auto fixed inset-0 z-40 bg-black/40 backdrop-blur-[2px] lg:hidden"
+              />
+              <motion.div
+                id="mobile-nav"
+                initial={{ opacity: 0, y: -14, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -12, scale: 0.98 }}
+                transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                className="pointer-events-auto fixed inset-x-3 top-[4.6rem] z-50 lg:hidden sm:inset-x-5 sm:top-[5.2rem]"
+              >
+                <div className="theme-surface-strong max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl p-2.5 shadow-[0_28px_60px_-36px_rgba(0,0,0,0.65)] sm:max-h-[calc(100vh-6.6rem)] sm:p-3">
+                  <div className="flex flex-col">
+                    {links.map((l) => (
+                      <motion.a
+                        key={l.href}
+                        href={l.href}
+                        onClick={() => setOpen(false)}
+                        whileTap={{ scale: 0.98 }}
+                        transition={{ type: 'spring', stiffness: 520, damping: 32, mass: 0.35 }}
+                        className="group inline-flex items-center gap-2 rounded-xl px-3 py-3 text-sm font-semibold text-slate-700 transition-colors hover:bg-black/5 hover:text-slate-900 dark:text-white/80 dark:hover:bg-white/5 dark:hover:text-white"
+                      >
+                        <span className="grid place-items-center">
+                          <l.Icon className="h-4 w-4 opacity-80 transition-transform duration-200 ease-out group-hover:-rotate-6" />
+                        </span>
+                        <span>{l.label}</span>
+                      </motion.a>
+                    ))}
+                    <a
+                      href="#locations"
                       onClick={() => setOpen(false)}
-                      whileTap={{ scale: 0.98 }}
-                      transition={{ type: 'spring', stiffness: 520, damping: 32, mass: 0.35 }}
-                      className="group inline-flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-semibold text-slate-700 transition-colors hover:bg-black/5 hover:text-slate-900 dark:text-white/80 dark:hover:bg-white/5 dark:hover:text-white"
+                      className="btn-apple mt-2 inline-flex items-center justify-center rounded-xl bg-slate-900 px-4 py-3 text-sm font-black text-white shadow-sm shadow-black/10 transition-shadow hover:shadow-md dark:bg-white dark:text-black"
                     >
-                      <span className="grid place-items-center">
-                        <l.Icon className="h-4 w-4 opacity-80 transition-transform duration-200 ease-out group-hover:-rotate-6" />
-                      </span>
-                      <span>{l.label}</span>
-                    </motion.a>
-                  ))}
-                  <a
-                    href="#locations"
-                    onClick={() => setOpen(false)}
-                    className="btn-apple mt-2 inline-flex items-center justify-center rounded-xl bg-slate-900 px-4 py-2 text-sm font-black text-white shadow-sm shadow-black/10 transition-shadow hover:shadow-md dark:bg-white dark:text-black"
-                  >
-                    Request a quote
-                  </a>
+                      Request a quote
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </>
           ) : null}
         </AnimatePresence>
       </div>
