@@ -75,6 +75,7 @@ export function Footer() {
   const baseUrl = import.meta.env.BASE_URL
   const providedLogo = `${baseUrl}rajarata-logo.png`
   const idbLogo = `${baseUrl}idb-logo.png`
+  const coconutAuthorityLogo = `${baseUrl}coconut-development-authority-logo.png`
 
   const socials = [
     { label: 'Facebook', href: 'https://facebook.com/' },
@@ -108,7 +109,6 @@ export function Footer() {
             </span>
             <div>
               <p className="text-sm font-black text-slate-900 dark:text-white">Rajarata Plantation Export (Pvt) Ltd</p>
-              <p className="mt-1 text-sm text-slate-600 dark:text-white/60">King coconut | green papaya | tapioca products</p>
               <p className="mt-1 text-xs text-slate-500 dark:text-white/50">No. 427/A, Wilimbula Waththa, Radawana, Sri Lanka</p>
               <a
                 href="mailto:rrpratnayake@gmail.com"
@@ -150,24 +150,50 @@ export function Footer() {
             ))}
           </div>
         </div>
-        <div className="theme-surface-strong mt-8 rounded-2xl p-4 sm:p-5">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="min-w-0">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-white/60">
-                Company Registration
-              </p>
-              <p className="mt-1 text-sm font-black text-slate-900 dark:text-white">
-                Registered company with the Industrial Development Board (IDB), Sri Lanka
-              </p>
+        <div className="mt-8 rounded-2xl p-4 sm:p-5">
+          <div className="min-w-0">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-white/60">
+              Registrations
+            </p>
+            <p className="mt-1 text-sm font-black text-slate-900 dark:text-white">
+              Registered with key Sri Lankan industry and export authorities
+            </p>
+          </div>
+          <div className="mt-4 grid gap-3 md:grid-cols-2">
+            <div className="flex items-center justify-between gap-4 border border-[color:var(--surface-border)] p-4">
+              <div className="min-w-0">
+                <p className="text-sm font-black text-slate-900 dark:text-white">Industrial Development Board</p>
+                <p className="mt-1 text-xs leading-relaxed text-slate-500 dark:text-white/60">
+                  Registered company with IDB, Sri Lanka.
+                </p>
+              </div>
+              <div className="shrink-0 overflow-hidden rounded-xl bg-white p-2">
+                <img
+                  src={idbLogo}
+                  alt="Industrial Development Board IDB logo"
+                  className="h-auto w-[5.2rem] object-contain sm:w-[6rem]"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
             </div>
-            <div className="overflow-hidden rounded-xl border border-black/10 bg-black dark:border-white/10">
-              <img
-                src={idbLogo}
-                alt="Industrial Development Board IDB logo"
-                className="h-auto w-[5.8rem] object-contain sm:w-[6.5rem]"
-                loading="lazy"
-                decoding="async"
-              />
+
+            <div className="flex items-center justify-between gap-4 border border-[color:var(--surface-border)] p-4">
+              <div className="min-w-0">
+                <p className="text-sm font-black text-slate-900 dark:text-white">Coconut Development Authority</p>
+                <p className="mt-1 text-xs leading-relaxed text-slate-500 dark:text-white/60">
+                  Registered with the Sri Lanka Coconut Development Authority.
+                </p>
+              </div>
+              <div className="shrink-0 overflow-hidden rounded-xl bg-white p-2">
+                <img
+                  src={coconutAuthorityLogo}
+                  alt="Sri Lanka Coconut Development Authority logo"
+                  className="h-auto w-[4.9rem] object-contain sm:w-[5.6rem]"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
             </div>
           </div>
         </div>

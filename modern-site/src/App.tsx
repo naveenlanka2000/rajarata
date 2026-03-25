@@ -60,7 +60,80 @@ function IconMapPin(props: { className?: string }) {
   )
 }
 
+function IconDestination(props: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={props.className}>
+      <path d="M6 20V4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <path
+        d="M7 5.2h9.2l-1.9 3.3 1.9 3.3H7"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
+function IconPacking(props: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={props.className}>
+      <path d="M4.5 8.2 12 4l7.5 4.2-7.5 4.1L4.5 8.2Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <path d="M4.5 8.2V16L12 20l7.5-4V8.2" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <path d="M12 12.3V20" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function IconQuantity(props: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={props.className}>
+      <path d="M6 7.5h12M6 12h12M6 16.5h12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M8.2 5.5v13" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" opacity="0.55" />
+    </svg>
+  )
+}
+
+function IconAirSea(props: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={props.className}>
+      <path d="M3.5 15.5h17" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M5 15.5 7.2 9h7.7l2.1 6.5" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <path d="M18 8l2.5-1.3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M9 18.3a1.3 1.3 0 1 0 0-2.6 1.3 1.3 0 0 0 0 2.6ZM15.4 18.3a1.3 1.3 0 1 0 0-2.6 1.3 1.3 0 0 0 0 2.6Z" fill="currentColor" />
+    </svg>
+  )
+}
+
+function IconDocuments(props: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={props.className}>
+      <path d="M7 3.8h7l3 3V20H7V3.8Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <path d="M14 3.8v3h3" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+      <path d="M9.3 11h5.4M9.3 14h5.4M9.3 17h3.8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function IconIncoterms(props: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={props.className}>
+      <circle cx="12" cy="12" r="7.5" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M12 8.3v4.1l2.7 1.6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 function App() {
+  const requirementChips = [
+    { label: 'Destination', Icon: IconDestination },
+    { label: 'Packing spec', Icon: IconPacking },
+    { label: 'Quantity', Icon: IconQuantity },
+    { label: 'Air / Sea', Icon: IconAirSea },
+    { label: 'Documents', Icon: IconDocuments },
+    { label: 'Incoterms', Icon: IconIncoterms },
+  ] as const
+
   return (
     <div className="min-h-screen bg-transparent text-slate-900 dark:text-white">
       <Navbar />
@@ -117,7 +190,7 @@ function App() {
 
         <Section
           id="story"
-          className="py-16 sm:py-20"
+          className="pb-16 pt-8 sm:pb-20 sm:pt-10"
           eyebrow="Quality"
           title={
             <>
@@ -127,7 +200,7 @@ function App() {
           subtitle="Sustainable practices, fair partnerships, and careful packing that protects products throughout transit."
         >
           <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch">
-            <div className="theme-surface rounded-[2rem] p-7">
+            <div className="rounded-[2rem] border border-transparent bg-[color:var(--surface-base)] p-7 shadow-[var(--surface-shadow)] backdrop-blur-[18px] [-webkit-backdrop-filter:blur(18px)]">
               <h3 className="text-xl font-black text-slate-900 dark:text-white">Quality you can rely on</h3>
               <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-white/70">
                 Rajarata Plantation Export (Pvt) Ltd is committed to sustainable agricultural practices and fair trade
@@ -167,12 +240,13 @@ function App() {
                   "King coconuts to UAE, air shipment, export cartons, quantity: 1x20ft (or your quantity). Please quote."
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {['Destination', 'Packing spec', 'Quantity', 'Air / Sea', 'Documents', 'Incoterms'].map((t) => (
+                  {requirementChips.map(({ label, Icon }) => (
                     <span
-                      key={t}
-                      className="theme-chip rounded-full px-3 py-1 text-xs font-bold text-slate-700 dark:text-white/70"
+                      key={label}
+                      className="theme-chip inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold text-slate-700 dark:text-white/70"
                     >
-                      {t}
+                      <Icon className="h-3.5 w-3.5 opacity-80" />
+                      {label}
                     </span>
                   ))}
                 </div>
