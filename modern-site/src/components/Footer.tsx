@@ -1,7 +1,9 @@
+import type { ReactNode } from 'react'
+
 function SocialIcon(props: {
   label: string
   href: string
-  children: React.ReactNode
+  children: ReactNode
 }) {
   return (
     <a
@@ -10,7 +12,7 @@ function SocialIcon(props: {
       rel={props.href.startsWith('http') ? 'noreferrer' : undefined}
       aria-label={props.label}
       title={props.label}
-      className="group inline-flex h-10 w-10 items-center justify-center rounded-xl bg-black/5 text-slate-700 transition-transform transition-colors duration-200 hover:-translate-y-0.5 hover:bg-black/10 dark:bg-white/5 dark:text-white/80 dark:hover:bg-white/10"
+      className="theme-chip group inline-flex h-10 w-10 items-center justify-center rounded-xl text-slate-700 transition-transform transition-colors duration-200 hover:-translate-y-0.5 dark:text-white/80"
     >
       <span className="sr-only">{props.label}</span>
       <span className="transition-transform duration-200 group-hover:scale-110">{props.children}</span>
@@ -72,8 +74,8 @@ function IconWhatsApp(props: { className?: string }) {
 export function Footer() {
   const baseUrl = import.meta.env.BASE_URL
   const providedLogo = `${baseUrl}rajarata-logo.png`
+  const idbLogo = `${baseUrl}idb-logo.png`
 
-  // Update these links with your real profiles.
   const socials = [
     { label: 'Facebook', href: 'https://facebook.com/' },
     { label: 'Instagram', href: 'https://instagram.com/' },
@@ -82,11 +84,11 @@ export function Footer() {
   ] as const
 
   return (
-    <footer className="border-t border-black/10 bg-black/[0.03] py-10 dark:border-white/10 dark:bg-black/20">
+    <footer className="theme-band border-t py-10">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
-            <span className="grid h-16 w-16 place-items-center overflow-hidden rounded-full bg-black/5 dark:bg-white/10">
+            <span className="theme-chip grid h-16 w-16 place-items-center overflow-hidden rounded-full">
               <img
                 src={`${baseUrl}logo.png`}
                 alt="Rajarata Plantation Export logo"
@@ -106,7 +108,7 @@ export function Footer() {
             </span>
             <div>
               <p className="text-sm font-black text-slate-900 dark:text-white">Rajarata Plantation Export (Pvt) Ltd</p>
-              <p className="mt-1 text-sm text-slate-600 dark:text-white/60">King coconut • green papaya • tapioca products</p>
+              <p className="mt-1 text-sm text-slate-600 dark:text-white/60">King coconut | green papaya | tapioca products</p>
               <p className="mt-1 text-xs text-slate-500 dark:text-white/50">No. 427/A, Wilimbula Waththa, Radawana, Sri Lanka</p>
               <a
                 href="mailto:rrpratnayake@gmail.com"
@@ -148,8 +150,29 @@ export function Footer() {
             ))}
           </div>
         </div>
+        <div className="theme-surface-strong mt-8 rounded-2xl p-4 sm:p-5">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="min-w-0">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-white/60">
+                Company Registration
+              </p>
+              <p className="mt-1 text-sm font-black text-slate-900 dark:text-white">
+                Registered company with the Industrial Development Board (IDB), Sri Lanka
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-xl border border-black/10 bg-black dark:border-white/10">
+              <img
+                src={idbLogo}
+                alt="Industrial Development Board IDB logo"
+                className="h-auto w-[5.8rem] object-contain sm:w-[6.5rem]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
         <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-slate-500 dark:text-white/50">© {new Date().getFullYear()} Rajarata Plantation Export (Pvt) Ltd. All rights reserved.</p>
+          <p className="text-xs text-slate-500 dark:text-white/50">(c) {new Date().getFullYear()} Rajarata Plantation Export (Pvt) Ltd. All rights reserved.</p>
           <p className="text-xs text-slate-500 dark:text-white/50">Made with Vite + React + Tailwind.</p>
         </div>
       </div>

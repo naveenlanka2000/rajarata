@@ -146,14 +146,14 @@ export function Navbar() {
       <div className="mx-auto w-full max-w-6xl px-3 sm:px-5 lg:px-8">
         <div
           className={
-            'pointer-events-auto mt-3 flex items-center justify-between gap-3 rounded-2xl px-3 py-2.5 backdrop-blur transition sm:px-4 sm:py-3 ' +
+            'pointer-events-auto mt-3 flex items-center justify-between gap-3 rounded-2xl px-3 py-2.5 transition sm:px-4 sm:py-3 ' +
             (scrolled
-              ? 'bg-white/78 shadow-[0_14px_40px_-24px_rgba(15,23,42,0.28)] dark:bg-black/55'
-              : 'bg-white/58 dark:bg-black/26')
+              ? 'theme-nav-shell-strong'
+              : 'theme-nav-shell')
           }
         >
           <a href="#top" className="flex min-w-0 flex-1 items-center gap-2.5 pr-2 sm:gap-3">
-            <span className="relative grid h-11 w-11 place-items-center overflow-hidden rounded-full bg-black/5 dark:bg-white/10 sm:h-14 sm:w-14">
+            <span className="theme-chip relative grid h-11 w-11 place-items-center overflow-hidden rounded-full sm:h-14 sm:w-14">
               <img
                 src={`${baseUrl}logo.png`}
                 alt="Rajarata Plantation Export logo"
@@ -208,15 +208,15 @@ export function Navbar() {
             >
               Request a quote
             </a>
-            <ThemeToggle className="inline-flex items-center justify-center rounded-xl border border-black/10 bg-black/5 px-2.5 py-2 text-sm font-semibold text-slate-900 hover:bg-black/10 xl:px-3 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10" />
+            <ThemeToggle className="theme-chip inline-flex items-center justify-center rounded-xl px-2.5 py-2 text-sm font-semibold text-slate-900 xl:px-3 dark:text-white" />
           </nav>
 
           <div className="flex shrink-0 items-center gap-2 lg:hidden">
-            <ThemeToggle className="inline-flex items-center justify-center rounded-xl border border-black/10 bg-black/5 px-2.5 py-2 text-[0.8rem] font-semibold text-slate-900 hover:bg-black/10 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 sm:px-3 sm:text-sm" />
+            <ThemeToggle className="theme-chip inline-flex items-center justify-center rounded-xl px-2.5 py-2 text-[0.8rem] font-semibold text-slate-900 dark:text-white sm:px-3 sm:text-sm" />
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
-              className="inline-flex items-center justify-center rounded-xl border border-black/10 bg-black/5 px-2.5 py-2 text-[0.8rem] font-semibold text-slate-900 dark:border-white/10 dark:bg-white/5 dark:text-white sm:px-3 sm:text-sm"
+              className="theme-chip inline-flex items-center justify-center rounded-xl px-2.5 py-2 text-[0.8rem] font-semibold text-slate-900 dark:text-white sm:px-3 sm:text-sm"
               aria-expanded={open}
               aria-controls="mobile-nav"
             >
@@ -235,7 +235,7 @@ export function Navbar() {
               transition={{ duration: 0.25 }}
               className="pointer-events-auto overflow-hidden"
             >
-              <div className="mt-2 max-h-[calc(100vh-5.5rem)] overflow-y-auto rounded-2xl border border-black/10 bg-white/88 p-2.5 backdrop-blur dark:border-white/10 dark:bg-black/70 sm:p-3">
+              <div className="theme-surface-strong mt-2 max-h-[calc(100vh-5.5rem)] overflow-y-auto rounded-2xl p-2.5 sm:p-3">
                 <div className="flex flex-col">
                   {links.map((l) => (
                     <motion.a

@@ -70,7 +70,7 @@ export function GalleryCarousel({ slides }: GalleryCarouselProps) {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={`${slide.title}-${index}`} className="h-auto">
-            <article className="group relative aspect-[4/3] overflow-hidden rounded-none border border-black/10 bg-slate-200 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.35)] dark:border-white/12">
+            <article className="theme-surface-strong group relative aspect-[4/3] overflow-hidden rounded-none">
               <img
                 src={slide.image}
                 alt={slide.title}
@@ -135,7 +135,7 @@ export function GalleryCarousel({ slides }: GalleryCarouselProps) {
           aria-pressed={isPaused}
           aria-label={isPaused ? 'Resume slideshow' : 'Pause slideshow'}
           disabled={!canLoop}
-          className="grid h-11 w-11 place-items-center rounded-full bg-black/8 text-slate-900 transition-colors hover:bg-black/12 dark:bg-white/10 dark:text-white dark:hover:bg-white/16 sm:absolute sm:right-0"
+          className="theme-chip grid h-11 w-11 place-items-center rounded-full text-slate-900 disabled:opacity-60 dark:text-white sm:absolute sm:right-0"
         >
           {isPaused ? <span className="ml-0.5 text-[11px] font-bold">Play</span> : <PauseIcon />}
         </button>

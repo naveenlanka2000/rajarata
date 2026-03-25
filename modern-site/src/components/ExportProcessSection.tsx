@@ -13,29 +13,25 @@ export function ExportProcessSection() {
 
   const collageCards = [
     {
-      src: `${baseUrl}produce-01.png`,
-      alt: 'King coconut fruit prepared for export',
-      label: 'King coconut selection',
-      className:
-        'right-0 top-0 w-[84%] rotate-[-10deg] bg-white dark:bg-[#101721] dark:ring-white/10',
-      imageWrap:
-        'bg-[linear-gradient(145deg,rgba(236,253,245,1),rgba(254,243,199,0.95))] dark:bg-[linear-gradient(145deg,rgba(16,185,129,0.16),rgba(245,158,11,0.18))]',
+      src: `${baseUrl}export-process-papaya-farm-optimized.jpg`,
+      alt: 'Papaya field prepared for harvest and sourcing',
+      label: 'Field sourcing',
+      className: 'right-[3%] top-[2%] w-[74%] rotate-[-10deg]',
+      imageWrap: 'bg-slate-100 dark:bg-slate-900',
     },
     {
-      src: `${baseUrl}produce-04.png`,
-      alt: 'Pineapple fruit prepared for export',
-      label: 'Pineapple export grade',
-      className:
-        'left-[4%] top-[43%] w-[72%] rotate-[9deg] bg-white dark:bg-[#101721] dark:ring-white/10',
-      imageWrap:
-        'bg-[linear-gradient(145deg,rgba(239,246,255,1),rgba(254,240,138,0.92))] dark:bg-[linear-gradient(145deg,rgba(59,130,246,0.14),rgba(250,204,21,0.18))]',
+      src: `${baseUrl}export-process-pineapple-farm-optimized.jpg`,
+      alt: 'Pineapple farm image showing field harvest',
+      label: 'Harvest stage',
+      className: 'left-[10%] top-[46%] w-[64%] rotate-[9deg]',
+      imageWrap: 'bg-slate-100 dark:bg-slate-900',
     },
   ] as const
 
   return (
     <section
       id="how"
-      className="scroll-mt-24 overflow-hidden bg-[#fbf8ef] py-16 dark:bg-[linear-gradient(180deg,#0b1118_0%,#0a0f16_100%)] sm:scroll-mt-28 sm:py-24"
+      className="scroll-mt-24 overflow-hidden bg-[linear-gradient(180deg,rgba(248,250,252,0.72)_0%,rgba(241,245,249,0.9)_100%)] py-16 dark:bg-[linear-gradient(180deg,rgba(0,0,0,1)_0%,rgba(0,0,0,1)_100%)] sm:scroll-mt-28 sm:py-24"
     >
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -106,7 +102,7 @@ export function ExportProcessSection() {
                 whileInView={{ opacity: 1, y: 0, rotate: idx === 0 ? -10 : 9 }}
                 viewport={{ once: true, margin: '-90px' }}
                 transition={{ type: 'spring', stiffness: 190, damping: 22, mass: 0.85, delay: idx * 0.08 }}
-                className={`absolute rounded-none p-4 ring-1 ring-black/6 ${card.className}`}
+                className={`theme-surface-strong absolute rounded-none p-4 !shadow-none ${card.className}`}
               >
                 <div className={`overflow-hidden rounded-none ${card.imageWrap}`}>
                   <img
@@ -114,7 +110,7 @@ export function ExportProcessSection() {
                     alt={card.alt}
                     loading="lazy"
                     decoding="async"
-                    className="h-[16rem] w-full object-contain p-3 sm:h-[18rem] sm:p-4"
+                    className="h-[16rem] w-full object-cover sm:h-[18rem]"
                   />
                 </div>
                 <p className="mt-3 text-[0.72rem] font-black uppercase tracking-[0.18em] text-slate-800 dark:text-white/82 sm:text-[0.76rem]">
