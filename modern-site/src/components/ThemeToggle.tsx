@@ -41,13 +41,13 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
       onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
       className={
         className ??
-        'inline-flex h-10 w-10 items-center justify-center rounded-xl border border-black/10 bg-black/5 text-slate-900 hover:bg-black/10 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10'
+        'inline-flex h-8 w-8 items-center justify-center rounded-full text-slate-900 transition-opacity hover:opacity-70 dark:text-white'
       }
       aria-label="Toggle theme"
       title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       <span className="sr-only">{theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}</span>
-      {theme === 'dark' ? <IconSun className="h-4.5 w-4.5" /> : <IconMoon className="h-4.5 w-4.5" />}
+      {theme === 'dark' ? <IconSun className="h-4 w-4" /> : <IconMoon className="h-4 w-4" />}
     </button>
   )
 }

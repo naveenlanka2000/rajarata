@@ -246,22 +246,22 @@ export function Navbar() {
             >
               Request a quote
             </a>
-            <ThemeToggle className="theme-chip inline-flex h-10 w-10 items-center justify-center rounded-xl text-slate-900 dark:text-white" />
+            <ThemeToggle className="inline-flex h-8 w-8 items-center justify-center rounded-full text-slate-900 transition-opacity hover:opacity-70 dark:text-white" />
           </nav>
 
           <div className="flex shrink-0 items-center gap-2 lg:hidden">
-            <ThemeToggle className="theme-chip inline-flex h-10 w-10 items-center justify-center rounded-xl text-slate-900 dark:text-white sm:h-11 sm:w-11" />
+            <ThemeToggle className="inline-flex h-8 w-8 items-center justify-center rounded-full text-slate-900 transition-opacity hover:opacity-70 dark:text-white sm:h-9 sm:w-9" />
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
-              className="theme-chip inline-flex h-10 w-10 items-center justify-center rounded-xl text-slate-900 dark:text-white sm:h-11 sm:w-11"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full text-slate-900 transition-opacity hover:opacity-70 dark:text-white sm:h-9 sm:w-9"
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? 'Close menu' : 'Open menu'}
               title={open ? 'Close menu' : 'Open menu'}
             >
               <span className="sr-only">{open ? 'Close menu' : 'Open menu'}</span>
-              {open ? <IconClose className="h-4.5 w-4.5" /> : <IconMenu className="h-4.5 w-4.5" />}
+              {open ? <IconClose className="h-4 w-4" /> : <IconMenu className="h-4 w-4" />}
             </button>
           </div>
         </div>
