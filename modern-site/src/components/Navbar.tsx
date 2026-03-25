@@ -102,6 +102,22 @@ function IconContact(props: { className?: string }) {
   )
 }
 
+function IconMenu(props: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={props.className}>
+      <path d="M4.5 7h15M4.5 12h15M4.5 17h15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function IconClose(props: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={props.className}>
+      <path d="m6 6 12 12M18 6 6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  )
+}
+
 const links = [
   { label: 'Products', href: '#menu', Icon: IconProducts },
   { label: 'Export process', href: '#how', Icon: IconProcess },
@@ -230,20 +246,22 @@ export function Navbar() {
             >
               Request a quote
             </a>
-            <ThemeToggle className="theme-chip inline-flex items-center justify-center rounded-xl px-2.5 py-2 text-sm font-semibold text-slate-900 xl:px-3 dark:text-white" />
+            <ThemeToggle className="theme-chip inline-flex h-10 w-10 items-center justify-center rounded-xl text-slate-900 dark:text-white" />
           </nav>
 
           <div className="flex shrink-0 items-center gap-2 lg:hidden">
-            <ThemeToggle className="theme-chip inline-flex items-center justify-center rounded-xl px-2.5 py-2 text-[0.8rem] font-semibold text-slate-900 dark:text-white sm:px-3 sm:text-sm" />
+            <ThemeToggle className="theme-chip inline-flex h-10 w-10 items-center justify-center rounded-xl text-slate-900 dark:text-white sm:h-11 sm:w-11" />
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
-              className="theme-chip inline-flex items-center justify-center rounded-xl px-2.5 py-2 text-[0.8rem] font-semibold text-slate-900 dark:text-white sm:px-3 sm:text-sm"
+              className="theme-chip inline-flex h-10 w-10 items-center justify-center rounded-xl text-slate-900 dark:text-white sm:h-11 sm:w-11"
               aria-expanded={open}
               aria-controls="mobile-nav"
               aria-label={open ? 'Close menu' : 'Open menu'}
+              title={open ? 'Close menu' : 'Open menu'}
             >
-              {open ? 'Close' : 'Menu'}
+              <span className="sr-only">{open ? 'Close menu' : 'Open menu'}</span>
+              {open ? <IconClose className="h-4.5 w-4.5" /> : <IconMenu className="h-4.5 w-4.5" />}
             </button>
           </div>
         </div>
