@@ -109,7 +109,7 @@ export function Footer() {
             </span>
             <div>
               <p className="text-sm font-black text-slate-900 dark:text-white">Rajarata Plantation Export (Pvt) Ltd</p>
-              <p className="mt-1 text-xs text-slate-500 dark:text-white/50">No. 427/A, Wilimbula Waththa, Radawana, Sri Lanka</p>
+              <p className="mt-1 text-xs text-slate-500 dark:text-white/50">343Q+PQC, Hanwella - Kirindiwela - Urapola Rd, Sri Lanka</p>
               <a
                 href="mailto:rrpratnayake@gmail.com"
                 className="mt-1 inline-block text-xs font-semibold text-slate-600 hover:text-slate-900 dark:text-white/60 dark:hover:text-white"

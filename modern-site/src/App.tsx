@@ -277,18 +277,18 @@ function App() {
                 kind: 'email',
               },
               {
-                name: 'Owner',
+                name: 'Chairman',
                 line1: 'R.R.P. Rathnayake',
-                line2: 'Owner - Rajarata Plantation Export (Pvt) Ltd',
+                line2: 'Chairman - Rajarata Plantation Export (Pvt) Ltd',
                 href: 'mailto:rrpratnayake@gmail.com',
-                cta: 'Contact owner',
-                kind: 'owner',
+                cta: 'Contact chairman',
+                kind: 'chairman',
               },
               {
                 name: 'Office',
-                line1: 'No. 427/A, Wilimbula Waththa',
-                line2: 'Radawana, Sri Lanka',
-                href: 'https://www.google.com/maps/search/?api=1&query=No.%20427%2FA%2C%20Wilimbula%20Waththa%2C%20Radawana%2C%20Sri%20Lanka',
+                line1: 'Rajarata Plantation And Export PVT LTD',
+                line2: '343Q+PQC, Hanwella - Kirindiwela - Urapola Rd, Sri Lanka',
+                href: 'https://www.google.com/maps/search/?api=1&query=Rajarata%20Plantation%20And%20Export%20PVT%20LTD%2C%20343Q%2BPQC%2C%20Hanwella%20-%20Kirindiwela%20-%20Urapola%20Rd%2C%20Sri%20Lanka',
                 cta: 'View location',
                 kind: 'office',
               },
@@ -299,12 +299,12 @@ function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ type: 'spring', stiffness: 240, damping: 28, mass: 0.75, delay: idx * 0.05 }}
-                className="theme-surface group rounded-none p-6"
+                className="theme-surface group flex h-full flex-col rounded-none p-6"
               >
                 <div className="theme-surface-strong mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl text-slate-900 transition-transform duration-300 group-hover:scale-[1.22] dark:text-white">
                   {loc.kind === 'email' ? (
                     <IconMail className="h-6 w-6" />
-                  ) : loc.kind === 'owner' ? (
+                  ) : loc.kind === 'chairman' ? (
                     <IconUserBadge className="h-6 w-6" />
                   ) : (
                     <IconMapPin className="h-6 w-6" />
@@ -317,7 +317,7 @@ function App() {
                   href={loc.href}
                   target={loc.href.startsWith('http') ? '_blank' : undefined}
                   rel={loc.href.startsWith('http') ? 'noreferrer' : undefined}
-                  className="btn-apple theme-chip mt-5 inline-flex w-full items-center justify-center rounded-2xl px-4 py-2 text-sm font-black text-slate-900 dark:text-white"
+                  className="btn-apple theme-chip mt-auto inline-flex w-full items-center justify-center rounded-2xl px-4 py-2 text-sm font-black text-slate-900 dark:text-white"
                 >
                   {loc.cta}
                 </a>
