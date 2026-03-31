@@ -1,4 +1,5 @@
 import './App.css'
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ExportProcessSection } from './components/ExportProcessSection'
 import { Footer } from './components/Footer'
@@ -125,6 +126,38 @@ function IconIncoterms(props: { className?: string }) {
 }
 
 function App() {
+  useEffect(() => {
+    const scrollToHash = () => {
+      const hash = window.location.hash
+
+      if (!hash) {
+        return
+      }
+
+      const target = document.getElementById(decodeURIComponent(hash.slice(1)))
+
+      if (!target) {
+        return
+      }
+
+      target.scrollIntoView({ block: 'start' })
+    }
+
+    const runInitialScroll = () => {
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(scrollToHash)
+      })
+      window.setTimeout(scrollToHash, 180)
+    }
+
+    runInitialScroll()
+    window.addEventListener('hashchange', scrollToHash)
+
+    return () => {
+      window.removeEventListener('hashchange', scrollToHash)
+    }
+  }, [])
+
   const requirementChips = [
     { label: 'Destination', Icon: IconDestination },
     { label: 'Packing spec', Icon: IconPacking },
@@ -132,6 +165,23 @@ function App() {
     { label: 'Air / Sea', Icon: IconAirSea },
     { label: 'Documents', Icon: IconDocuments },
     { label: 'Incoterms', Icon: IconIncoterms },
+  ] as const
+  const logisticsCards = [
+    {
+      title: 'Shipment planning',
+      body: 'Destination, volume, and packing format are aligned early so export orders move with fewer delays and clearer booking decisions.',
+      Icon: IconDestination,
+    },
+    {
+      title: 'Document support',
+      body: 'Commercial paperwork, packing references, and shipment details are organized around the buyer and destination requirements.',
+      Icon: IconDocuments,
+    },
+    {
+      title: 'Air and sea coordination',
+      body: 'Rajarata Logistics supports the handover from packing to dispatch with practical coordination for air cargo and sea freight.',
+      Icon: IconAirSea,
+    },
   ] as const
 
   return (
@@ -173,16 +223,24 @@ function App() {
           eyebrow="Our products"
           title={
             <>
-              Export products, <span className="text-slate-600 dark:text-white/70">packed to your specifications</span>.
+              Product preview, <span className="text-slate-600 dark:text-white/70">with a dedicated catalog page</span>.
             </>
           }
           subtitle={
             <>
-              We supply king coconut, green papaya, and tapioca products from Sri Lanka. Share your destination, packing
-              requirements, and quantity, and we will respond with availability, lead time, and a quotation.
+              The homepage now gives a quick product overview. Use the separate products page to browse the full catalog,
+              review export support items, and prepare a clearer order brief.
             </>
           }
         >
+          <div className="mb-6 flex justify-start">
+            <a
+              href="./products.html"
+              className="btn-apple inline-flex items-center justify-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-black text-white shadow-sm shadow-black/10 transition-shadow hover:shadow-md dark:bg-white dark:text-black"
+            >
+              Open products page
+            </a>
+          </div>
           <ProductGrid items={signatureItems} />
         </Section>
 
@@ -199,6 +257,15 @@ function App() {
           }
           subtitle="Sustainable practices, fair partnerships, and careful packing that protects products throughout transit."
         >
+          <div className="mb-6 flex justify-start">
+            <a
+              href="./about.html"
+              className="btn-apple inline-flex items-center justify-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-black text-white shadow-sm shadow-black/10 transition-shadow hover:shadow-md dark:bg-white dark:text-black"
+            >
+              Open about page
+            </a>
+          </div>
+
           <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch">
             <div className="rounded-[2rem] border border-transparent bg-[color:var(--surface-base)] p-7 shadow-[var(--surface-shadow)] backdrop-blur-[18px] [-webkit-backdrop-filter:blur(18px)]">
               <h3 className="text-xl font-black text-slate-900 dark:text-white">Quality you can rely on</h3>
@@ -250,6 +317,61 @@ function App() {
                     </span>
                   ))}
                 </div>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        <Section
+          id="logistics"
+          className="pb-16 pt-4 sm:pb-20 sm:pt-6"
+          eyebrow="Logistics"
+          title={
+            <>
+              Rajarata Logistics, <span className="text-slate-600 dark:text-white/70">built around export movement</span>.
+            </>
+          }
+          subtitle="A preview of the logistics service page for shipment planning, document support, and dispatch coordination after packing is complete."
+        >
+          <div className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(300px,0.85fr)]">
+            <div className="grid gap-4 sm:grid-cols-3">
+              {logisticsCards.map(({ title, body, Icon }) => (
+                <div key={title} className="theme-surface flex h-full flex-col rounded-none p-6">
+                  <div className="theme-surface-strong inline-flex h-12 w-12 items-center justify-center rounded-xl text-slate-900 dark:text-white">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-5 text-lg font-black text-slate-900 dark:text-white">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-white/70">{body}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="theme-accent-panel rounded-[2rem] p-7">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-white/60">
+                Rajarata Logistics
+              </p>
+              <h3 className="mt-3 text-2xl font-black tracking-tight text-slate-900 dark:text-white">
+                Clear coordination from packing floor to shipment handover.
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-white/70">
+                Rajarata Logistics gives buyers a clearer view of pickup timing, shipment progress, and dispatch support
+                once cargo is packed and ready to move.
+              </p>
+              <a
+                href="./logistics.html"
+                className="btn-apple mt-5 inline-flex items-center justify-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-black text-white shadow-sm shadow-black/10 transition-shadow hover:shadow-md dark:bg-white dark:text-black"
+              >
+                Open logistics page
+              </a>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {['Pickup planning', 'Port updates', 'Buyer coordination', 'Air / Sea dispatch'].map((item) => (
+                  <span
+                    key={item}
+                    className="theme-chip inline-flex rounded-full px-3 py-1 text-xs font-bold text-slate-700 dark:text-white/70"
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
             </div>
           </div>

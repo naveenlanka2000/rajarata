@@ -155,7 +155,7 @@ export function Hero() {
                 className="mt-7 grid grid-cols-2 gap-3 sm:mt-8 sm:flex sm:flex-row"
               >
                 <a
-                  href="#menu"
+                  href="./products.html"
                   className="btn-apple inline-flex w-full items-center justify-center rounded-2xl bg-slate-900 px-4 py-3 text-xs font-black text-white shadow-sm shadow-black/10 transition-shadow hover:shadow-md dark:bg-white dark:text-black sm:w-auto sm:px-6 sm:text-sm"
                 >
                   View products

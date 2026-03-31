@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { getSiteLinks, type SitePage } from '../siteNavigation'
 
 function SocialIcon(props: {
   label: string
@@ -71,11 +72,16 @@ function IconWhatsApp(props: { className?: string }) {
   )
 }
 
-export function Footer() {
+type FooterProps = {
+  page?: SitePage
+}
+
+export function Footer({ page = 'home' }: FooterProps) {
   const baseUrl = import.meta.env.BASE_URL
   const providedLogo = `${baseUrl}rajarata-logo.png`
   const idbLogo = `${baseUrl}idb-logo.png`
   const coconutAuthorityLogo = `${baseUrl}coconut-development-authority-logo.png`
+  const links = getSiteLinks(page)
 
   const socials = [
     { label: 'Facebook', href: 'https://facebook.com/' },
@@ -134,14 +140,9 @@ export function Footer() {
             ))}
           </div>
           <div className="flex flex-wrap gap-3">
-            {[
-              { label: 'Products', href: '#menu' },
-              { label: 'Export process', href: '#how' },
-              { label: 'Quality', href: '#story' },
-              { label: 'Contact', href: '#locations' },
-            ].map((l) => (
+            {links.map((l) => (
               <a
-                key={l.href}
+                key={l.key}
                 href={l.href}
                 className="text-sm font-semibold text-slate-600 hover:text-slate-900 dark:text-white/70 dark:hover:text-white"
               >

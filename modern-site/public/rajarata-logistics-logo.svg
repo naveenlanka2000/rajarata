@@ -1,0 +1,29 @@
+<svg width="960" height="960" viewBox="0 0 960 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ring" x1="176" y1="176" x2="784" y2="784" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBBF24"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="trail" x1="260" y1="260" x2="700" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FAFC"/>
+      <stop offset="1" stop-color="#CBD5E1"/>
+    </linearGradient>
+  </defs>
+  <circle cx="480" cy="480" r="404" fill="#020617"/>
+  <circle cx="480" cy="480" r="390" stroke="url(#ring)" stroke-width="20"/>
+  <path d="M262 618C314 560 376 528 446 520C533 510 618 544 690 614" stroke="url(#trail)" stroke-width="22" stroke-linecap="round"/>
+  <path d="M608 346H382C362.118 346 346 362.118 346 382V542C346 561.882 362.118 578 382 578H608C627.882 578 644 561.882 644 542V382C644 362.118 627.882 346 608 346Z" stroke="url(#ring)" stroke-width="18"/>
+  <path d="M412 394V530" stroke="url(#ring)" stroke-width="16" stroke-linecap="round"/>
+  <path d="M484 394V530" stroke="url(#ring)" stroke-width="16" stroke-linecap="round"/>
+  <path d="M556 394V530" stroke="url(#ring)" stroke-width="16" stroke-linecap="round"/>
+  <path d="M678 298L744 270L716 340L786 366L666 394L678 298Z" fill="#FBBF24"/>
+  <path d="M250 640C250 640 286 680 344 702C402 724 484 730 564 706C644 682 702 634 702 634" stroke="#FBBF24" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="322" cy="642" r="18" fill="#FBBF24"/>
+  <circle cx="702" cy="634" r="18" fill="#FBBF24"/>
+  <text x="480" y="740" text-anchor="middle" fill="#F8FAFC" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="56" font-weight="700" letter-spacing="6">
+    RAJARATA
+  </text>
+  <text x="480" y="802" text-anchor="middle" fill="#FBBF24" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="58" font-weight="800" letter-spacing="8">
+    LOGISTICS
+  </text>
+</svg>

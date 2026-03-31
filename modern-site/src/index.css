@@ -152,7 +152,6 @@
   }
 
   .theme-nav-shell {
-    border: 1px solid var(--surface-border);
     background: var(--surface-nav);
     box-shadow: 0 18px 48px -34px rgba(15, 23, 42, 0.18);
     backdrop-filter: blur(18px);
@@ -160,7 +159,6 @@
   }
 
   .theme-nav-shell-strong {
-    border: 1px solid var(--surface-border);
     background: var(--surface-nav-strong);
     box-shadow: 0 20px 52px -34px rgba(15, 23, 42, 0.24);
     backdrop-filter: blur(20px);
