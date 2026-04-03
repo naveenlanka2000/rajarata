@@ -17,7 +17,7 @@ export function Hero() {
           titleLines: ['Golden King', 'Coconut', 'from Sri Lanka.'],
           description:
             'Rajarata Plantation Export (Pvt) Ltd supplies premium Sri Lankan produce with consistent quality and careful handling.',
-          imageSrc: `${baseUrl}hero-king-coconut-box-optimized.jpg`,
+          imageSrc: `${baseUrl}hero-king-coconut-box-optimized.png`,
           imageInitial: { opacity: 0, y: -180, scale: 0.94 },
           backgroundImageSrc: `${baseUrl}hero-king-coconut-bg-optimized.jpg`,
         },
@@ -27,7 +27,7 @@ export function Hero() {
           titleLines: ['Sun-Ripened', 'Red Papaya', 'for Export.'],
           description:
             'Fresh Sri Lankan red papaya selected, packed, and prepared for export with reliable handling for international buyers.',
-          imageSrc: `${baseUrl}hero-papaya-box-optimized.jpg`,
+          imageSrc: `${baseUrl}hero-papaya-box-optimized.png`,
           imageInitial: { opacity: 0, y: -180, scale: 0.94 },
           backgroundImageSrc: `${baseUrl}hero-red-papaya-bg-optimized.jpg`,
         },
@@ -37,7 +37,7 @@ export function Hero() {
           titleLines: ['Sweet Crown', 'Pineapple', 'for Export.'],
           description:
             'Fresh Sri Lankan pineapple packed for export with dependable quality, careful sorting, and shipment-ready presentation.',
-          imageSrc: `${baseUrl}hero-pineapple-box-optimized.jpg`,
+          imageSrc: `${baseUrl}hero-pineapple-box-optimized.png`,
           imageInitial: { opacity: 0, y: -180, scale: 0.94 },
           backgroundImageSrc: `${baseUrl}hero-pineapple-bg-optimized.jpg`,
         },
@@ -47,7 +47,7 @@ export function Hero() {
           titleLines: ['Earth-Fresh', 'Tapioca Roots', 'for Export.'],
           description:
             'Fresh Sri Lankan tapioca prepared for export with consistent grading, careful packing, and reliable shipment readiness.',
-          imageSrc: `${baseUrl}hero-tapioca-box-optimized.jpg`,
+          imageSrc: `${baseUrl}hero-tapioca-box-optimized.png`,
           imageInitial: { opacity: 0, y: -180, scale: 0.94 },
           backgroundImageSrc: `${baseUrl}hero-tapioca-bg-optimized.jpg`,
         },
