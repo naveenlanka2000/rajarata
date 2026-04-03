@@ -9,7 +9,7 @@ export type GallerySlide = {
 export const gallerySlides: GallerySlide[] = [
   {
     image:
-      'https://images.pexels.com/photos/20838762/pexels-photo-20838762.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=1600',
+      'https://images.pexels.com/photos/20838762/pexels-photo-20838762.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=720&w=960',
     brand: 'Coconuts',
     eyebrow: 'Tropical sourcing',
     title: 'Coconut supply from growing regions',
@@ -17,7 +17,7 @@ export const gallerySlides: GallerySlide[] = [
   },
   {
     image:
-      'https://images.pexels.com/photos/4858954/pexels-photo-4858954.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=1600',
+      'https://images.pexels.com/photos/4858954/pexels-photo-4858954.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=720&w=960',
     brand: 'Pineapple Farm',
     eyebrow: 'Field harvest',
     title: 'Farm-grown pineapples ready for collection',
@@ -25,7 +25,7 @@ export const gallerySlides: GallerySlide[] = [
   },
   {
     image:
-      'https://images.pexels.com/photos/4487486/pexels-photo-4487486.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=1600',
+      'https://images.pexels.com/photos/4487486/pexels-photo-4487486.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=720&w=960',
     brand: 'Shipment Loading',
     eyebrow: 'Dispatch workflow',
     title: 'Orders prepared and loaded for shipment',
@@ -33,7 +33,7 @@ export const gallerySlides: GallerySlide[] = [
   },
   {
     image:
-      'https://images.pexels.com/photos/32642359/pexels-photo-32642359.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=1600',
+      'https://images.pexels.com/photos/32642359/pexels-photo-32642359.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=720&w=960',
     brand: 'Air Freight',
     eyebrow: 'Airport cargo',
     title: 'Fast export movement through air cargo',
@@ -41,7 +41,7 @@ export const gallerySlides: GallerySlide[] = [
   },
   {
     image:
-      'https://images.pexels.com/photos/13025947/pexels-photo-13025947.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=1600',
+      'https://images.pexels.com/photos/13025947/pexels-photo-13025947.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=720&w=960',
     brand: 'Sea Freight',
     eyebrow: 'Port logistics',
     title: 'Container-based shipping for global markets',
@@ -49,7 +49,7 @@ export const gallerySlides: GallerySlide[] = [
   },
   {
     image:
-      'https://images.pexels.com/photos/14998735/pexels-photo-14998735.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=1600',
+      'https://images.pexels.com/photos/14998735/pexels-photo-14998735.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=720&w=960',
     brand: 'Export Logistics',
     eyebrow: 'Cargo handling',
     title: 'Freight coordination from warehouse to port',

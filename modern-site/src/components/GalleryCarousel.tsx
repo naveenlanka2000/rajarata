@@ -57,9 +57,6 @@ export function GalleryCarousel({ slides }: GalleryCarouselProps) {
         loop={canLoop}
         speed={900}
         watchOverflow
-        watchSlidesProgress
-        observer
-        observeParents
         onSwiper={(swiper) => {
           swiperRef.current = swiper
           setActiveIndex(swiper.realIndex)
@@ -76,6 +73,7 @@ export function GalleryCarousel({ slides }: GalleryCarouselProps) {
                 src={slide.image}
                 alt={slide.title}
                 loading={index === 0 ? 'eager' : 'lazy'}
+                decoding="async"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.08)_0%,rgba(0,0,0,0.05)_32%,rgba(0,0,0,0.72)_100%)]" />

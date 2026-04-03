@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { startTransition, useEffect, useMemo, useRef, useState } from 'react'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 
 export function Hero() {
   const baseUrl = import.meta.env.BASE_URL
+  const shouldReduceMotion = useReducedMotion()
   const [activeSlideIndex, setActiveSlideIndex] = useState(0)
   const slideDurationMs = 6000
   const preloadedAssetsRef = useRef(new Set<string>())
@@ -16,9 +17,9 @@ export function Hero() {
           titleLines: ['Golden King', 'Coconut', 'from Sri Lanka.'],
           description:
             'Rajarata Plantation Export (Pvt) Ltd supplies premium Sri Lankan produce with consistent quality and careful handling.',
-          imageSrc: `${baseUrl}hero-king-coconut-box.png`,
+          imageSrc: `${baseUrl}hero-king-coconut-box-optimized.jpg`,
           imageInitial: { opacity: 0, y: -180, scale: 0.94 },
-          backgroundImageSrc: `${baseUrl}hero-king-coconut-bg.png`,
+          backgroundImageSrc: `${baseUrl}hero-king-coconut-bg-optimized.jpg`,
         },
         {
           key: 'papaya',
@@ -26,9 +27,9 @@ export function Hero() {
           titleLines: ['Sun-Ripened', 'Red Papaya', 'for Export.'],
           description:
             'Fresh Sri Lankan red papaya selected, packed, and prepared for export with reliable handling for international buyers.',
-          imageSrc: `${baseUrl}hero-papaya-box.png`,
+          imageSrc: `${baseUrl}hero-papaya-box-optimized.jpg`,
           imageInitial: { opacity: 0, y: -180, scale: 0.94 },
-          backgroundImageSrc: `${baseUrl}hero-red-papaya-bg.png`,
+          backgroundImageSrc: `${baseUrl}hero-red-papaya-bg-optimized.jpg`,
         },
         {
           key: 'pineapple',
@@ -36,9 +37,9 @@ export function Hero() {
           titleLines: ['Sweet Crown', 'Pineapple', 'for Export.'],
           description:
             'Fresh Sri Lankan pineapple packed for export with dependable quality, careful sorting, and shipment-ready presentation.',
-          imageSrc: `${baseUrl}hero-pineapple-box.png`,
+          imageSrc: `${baseUrl}hero-pineapple-box-optimized.jpg`,
           imageInitial: { opacity: 0, y: -180, scale: 0.94 },
-          backgroundImageSrc: `${baseUrl}hero-pineapple-bg.png`,
+          backgroundImageSrc: `${baseUrl}hero-pineapple-bg-optimized.jpg`,
         },
         {
           key: 'tapioca',
@@ -46,9 +47,9 @@ export function Hero() {
           titleLines: ['Earth-Fresh', 'Tapioca Roots', 'for Export.'],
           description:
             'Fresh Sri Lankan tapioca prepared for export with consistent grading, careful packing, and reliable shipment readiness.',
-          imageSrc: `${baseUrl}hero-tapioca-box.png`,
+          imageSrc: `${baseUrl}hero-tapioca-box-optimized.jpg`,
           imageInitial: { opacity: 0, y: -180, scale: 0.94 },
-          backgroundImageSrc: `${baseUrl}hero-tapioca-bg.png`,
+          backgroundImageSrc: `${baseUrl}hero-tapioca-bg-optimized.jpg`,
         },
       ] as const,
     [baseUrl],
@@ -57,7 +58,13 @@ export function Hero() {
 
   useEffect(() => {
     const interval = window.setInterval(() => {
-      setActiveSlideIndex((currentIndex) => (currentIndex + 1) % slideCount)
+      if (document.hidden) {
+        return
+      }
+
+      startTransition(() => {
+        setActiveSlideIndex((currentIndex) => (currentIndex + 1) % slideCount)
+      })
     }, slideDurationMs)
 
     return () => {
@@ -90,14 +97,14 @@ export function Hero() {
         {currentSlide.backgroundImageSrc ? (
           <motion.div
             key={`${currentSlide.key}-bg`}
-            initial={{ opacity: 0, scale: 1.08, filter: 'blur(18px)' }}
-            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-            exit={{ opacity: 0, scale: 1.04, filter: 'blur(12px)' }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 1.03 }}
+            animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, scale: 1 }}
+            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 1.015 }}
+            transition={{ duration: shouldReduceMotion ? 0.3 : 0.65, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0 -z-[25] overflow-hidden"
           >
             <div
-              className="absolute left-1/2 top-1/2 h-[132vw] w-[198vh] -translate-x-1/2 -translate-y-1/2 rotate-90 bg-contain bg-center bg-no-repeat opacity-[0.3] sm:h-[108%] sm:w-[108%] sm:rotate-0 sm:bg-cover dark:opacity-[0.24]"
+              className="absolute left-1/2 top-1/2 h-[132vw] w-[198vh] -translate-x-1/2 -translate-y-1/2 rotate-90 bg-contain bg-center bg-no-repeat opacity-[0.3] sm:h-[108%] sm:w-[108%] sm:rotate-0 sm:bg-cover dark:opacity-[0.24] transform-gpu"
               style={{ backgroundImage: `url(${currentSlide.backgroundImageSrc})` }}
             />
           </motion.div>
@@ -175,10 +182,14 @@ export function Hero() {
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide.key}
-              initial={currentSlide.imageInitial}
-              animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-              exit={{ opacity: 0, x: 160, scale: 0.96 }}
-              transition={{ type: 'spring', stiffness: 120, damping: 16, mass: 0.95, delay: 0.12 }}
+              initial={shouldReduceMotion ? { opacity: 0 } : currentSlide.imageInitial}
+              animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, x: 0, y: 0, scale: 1 }}
+              exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: 160, scale: 0.96 }}
+              transition={
+                shouldReduceMotion
+                  ? { duration: 0.25 }
+                  : { type: 'spring', stiffness: 120, damping: 16, mass: 0.95, delay: 0.12 }
+              }
               className="relative mx-auto w-full max-w-[36rem] lg:ml-auto lg:mr-0 lg:max-w-[39rem] xl:max-w-[44rem] 2xl:max-w-[48rem]"
             >
               <div className="hero-spotlight-glow" />
@@ -191,6 +202,7 @@ export function Hero() {
                 loading="eager"
                 decoding="async"
                 fetchPriority={activeSlideIndex === 0 ? 'high' : 'auto'}
+                sizes="(min-width: 1536px) 768px, (min-width: 1280px) 704px, (min-width: 1024px) 624px, 90vw"
               />
             </motion.div>
           </AnimatePresence>

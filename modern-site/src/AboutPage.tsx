@@ -4,15 +4,15 @@ import { Navbar } from './components/Navbar'
 const overviewCards = [
   {
     title: 'Who we are',
-    body: 'Rajarata Plantation Export (Pvt) Ltd is a Sri Lankan export company focused on fresh produce, practical packing, and reliable shipment readiness.',
+    body: 'Rajarata Plantation Export (Pvt) Ltd is a Sri Lankan export company committed to supplying fresh agricultural produce with disciplined handling, reliable packing, and clear buyer communication.',
   },
   {
     title: 'What we supply',
-    body: 'Our work covers export-focused products such as king coconut, papaya, pineapple, tapioca, coconuts, and other fresh agricultural items.',
+    body: 'Our product range includes king coconut, papaya, pineapple, tapioca, coconuts, and other Sri Lankan produce prepared for wholesale and export-focused orders.',
   },
   {
     title: 'How we work',
-    body: 'We keep the process clear from sourcing and grading to packing, documentation support, and logistics coordination for buyers.',
+    body: 'We keep the export process organized from sourcing and grading to packing, documentation support, and logistics coordination so buyers receive a clearer and more dependable workflow.',
   },
 ] as const
 
@@ -45,9 +45,9 @@ export default function AboutPage() {
                 About Us
               </h1>
               <p className="mt-4 max-w-3xl text-base leading-7 text-slate-600 dark:text-white/70 sm:text-lg">
-                Rajarata Plantation Export (Pvt) Ltd connects Sri Lankan agricultural products with export buyers
-                who need straightforward communication, clean packing, and dependable shipment support. Our goal is
-                to present local produce with export discipline and practical service from inquiry to dispatch.
+                Rajarata Plantation Export (Pvt) Ltd represents Sri Lankan agriculture with a practical export
+                approach. We work with buyers who value product quality, careful packing, direct communication,
+                and dependable coordination from the first inquiry to the final shipment stage.
               </p>
             </div>
 
@@ -70,17 +70,17 @@ export default function AboutPage() {
                   Company Overview
                 </p>
                 <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-                  Export focused, buyer friendly, and built around real shipment work.
+                  Built to present Sri Lankan produce with export discipline.
                 </h2>
                 <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-white/70 sm:text-base">
-                  We combine local sourcing knowledge with export handling requirements so buyers get a clearer path
-                  from product inquiry to shipment movement. That includes product selection, packing discussion,
-                  commercial readiness, and the logistics support needed after cargo is prepared.
+                  We combine local sourcing knowledge with practical export handling so buyers get a clearer path
+                  from inquiry to shipment. That includes product selection, packing discussions, commercial
+                  readiness, and the coordination needed once cargo is prepared for dispatch.
                 </p>
                 <p className="mt-4 text-sm leading-7 text-slate-600 dark:text-white/70 sm:text-base">
-                  Our approach stays practical. We focus on what buyers actually need: product clarity, packing
-                  details, quality confidence, contact responsiveness, and shipment coordination that is easy to
-                  understand.
+                  Our approach stays straightforward and buyer-focused. We pay attention to product clarity,
+                  packing requirements, quality confidence, response speed, and shipment coordination that is easy
+                  to understand and easy to act on.
                 </p>
 
                 <div className="mt-6 flex flex-wrap gap-2">
@@ -150,11 +150,11 @@ export default function AboutPage() {
                   Contact
                 </p>
                 <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-                  Discuss products, packing, or export requirements.
+                  Talk to us about products, packing, and export planning.
                 </h2>
                 <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600 dark:text-white/70 sm:text-base">
-                  Reach out if you need pricing, availability, packing details, or export coordination support. We
-                  can continue the discussion from product inquiry through shipment planning.
+                  Contact us for availability, pricing, packing formats, or export coordination support. We aim to
+                  respond with clear information that helps buyers move quickly from inquiry to planning.
                 </p>
               </div>
 
