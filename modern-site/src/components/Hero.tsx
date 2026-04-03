@@ -19,7 +19,8 @@ export function Hero() {
             'Rajarata Plantation Export (Pvt) Ltd supplies premium Sri Lankan produce with consistent quality and careful handling.',
           imageSrc: `${baseUrl}hero-king-coconut-box-optimized.png`,
           imageInitial: { opacity: 0, y: -180, scale: 0.94 },
-          backgroundImageSrc: `${baseUrl}hero-king-coconut-bg-optimized.jpg`,
+          backgroundImageSrc: `${baseUrl}hero-king-coconut-bg.png`,
+          backgroundImageClassName: 'object-[center_72%] sm:object-center',
         },
         {
           key: 'papaya',
@@ -29,7 +30,8 @@ export function Hero() {
             'Fresh Sri Lankan red papaya selected, packed, and prepared for export with reliable handling for international buyers.',
           imageSrc: `${baseUrl}hero-papaya-box-optimized.png`,
           imageInitial: { opacity: 0, y: -180, scale: 0.94 },
-          backgroundImageSrc: `${baseUrl}hero-red-papaya-bg-optimized.jpg`,
+          backgroundImageSrc: `${baseUrl}hero-red-papaya-bg.png`,
+          backgroundImageClassName: 'object-center',
         },
         {
           key: 'pineapple',
@@ -39,7 +41,8 @@ export function Hero() {
             'Fresh Sri Lankan pineapple packed for export with dependable quality, careful sorting, and shipment-ready presentation.',
           imageSrc: `${baseUrl}hero-pineapple-box-optimized.png`,
           imageInitial: { opacity: 0, y: -180, scale: 0.94 },
-          backgroundImageSrc: `${baseUrl}hero-pineapple-bg-optimized.jpg`,
+          backgroundImageSrc: `${baseUrl}hero-pineapple-bg.png`,
+          backgroundImageClassName: 'object-center',
         },
         {
           key: 'tapioca',
@@ -49,7 +52,8 @@ export function Hero() {
             'Fresh Sri Lankan tapioca prepared for export with consistent grading, careful packing, and reliable shipment readiness.',
           imageSrc: `${baseUrl}hero-tapioca-box-optimized.png`,
           imageInitial: { opacity: 0, y: -180, scale: 0.94 },
-          backgroundImageSrc: `${baseUrl}hero-tapioca-bg-optimized.jpg`,
+          backgroundImageSrc: `${baseUrl}hero-tapioca-bg.png`,
+          backgroundImageClassName: 'object-center',
         },
       ] as const,
     [baseUrl],
@@ -95,23 +99,24 @@ export function Hero() {
       <div className="hero-premium-bg absolute inset-0 -z-30" />
       <AnimatePresence>
         {currentSlide.backgroundImageSrc ? (
-          <motion.div
+          <motion.img
             key={`${currentSlide.key}-bg`}
-            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 1.03 }}
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 1.05 }}
             animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, scale: 1 }}
-            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 1.015 }}
-            transition={{ duration: shouldReduceMotion ? 0.3 : 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-0 -z-[25] overflow-hidden"
-          >
-            <div
-              className="absolute left-1/2 top-1/2 h-[132vw] w-[198vh] -translate-x-1/2 -translate-y-1/2 rotate-90 bg-contain bg-center bg-no-repeat opacity-[0.3] sm:h-[108%] sm:w-[108%] sm:rotate-0 sm:bg-cover dark:opacity-[0.24] transform-gpu"
-              style={{ backgroundImage: `url(${currentSlide.backgroundImageSrc})` }}
-            />
-          </motion.div>
+            exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, scale: 1.03 }}
+            transition={{ duration: shouldReduceMotion ? 0.3 : 0.8, ease: [0.22, 1, 0.36, 1] }}
+            src={currentSlide.backgroundImageSrc}
+            alt=""
+            aria-hidden="true"
+            loading="eager"
+            decoding="async"
+            className={`pointer-events-none absolute inset-0 -z-[25] h-full w-full select-none object-cover opacity-[0.66] dark:opacity-[0.48] ${currentSlide.backgroundImageClassName}`}
+          />
         ) : null}
       </AnimatePresence>
-      <div className="pointer-events-none absolute inset-0 -z-20 opacity-[0.45] [background:radial-gradient(circle_at_1px_1px,rgba(15,23,42,.10)_1px,transparent_0)] [background-size:24px_24px] dark:opacity-[0.18]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-white/55 to-transparent dark:from-black/25 dark:to-transparent" />
+      <div className="pointer-events-none absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(255,255,255,0.9)_0%,rgba(255,255,255,0.84)_26%,rgba(255,255,255,0.58)_48%,rgba(255,255,255,0.18)_72%,rgba(255,255,255,0.03)_100%),radial-gradient(circle_at_76%_42%,rgba(251,191,36,0.07),transparent_22%),radial-gradient(circle_at_72%_60%,rgba(96,165,250,0.04),transparent_30%)] dark:bg-[linear-gradient(90deg,rgba(0,0,0,0.84)_0%,rgba(0,0,0,0.78)_26%,rgba(0,0,0,0.52)_48%,rgba(0,0,0,0.18)_72%,rgba(0,0,0,0.03)_100%),radial-gradient(circle_at_76%_42%,rgba(251,191,36,0.06),transparent_22%),radial-gradient(circle_at_72%_60%,rgba(96,165,250,0.035),transparent_30%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.22] [background:radial-gradient(circle_at_1px_1px,rgba(15,23,42,.10)_1px,transparent_0)] [background-size:24px_24px] dark:opacity-[0.1]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-40 bg-gradient-to-b from-white/28 to-transparent dark:from-black/12 dark:to-transparent" />
 
       <div className="site-shell grid min-h-[calc(82vh-5rem)] items-center gap-6 px-4 pb-6 sm:min-h-[calc(100vh-7rem)] sm:gap-10 sm:pb-12 sm:px-6 lg:grid-cols-[minmax(0,1.04fr)_minmax(380px,0.96fr)] lg:gap-14 lg:px-8 xl:grid-cols-[minmax(0,1fr)_minmax(430px,0.94fr)] xl:gap-20 2xl:grid-cols-[minmax(0,1fr)_minmax(470px,0.92fr)]">
         <div className="relative z-10 max-w-2xl py-4 sm:-translate-y-2 sm:py-8 lg:max-w-[44rem] lg:-translate-y-6 lg:py-12 xl:max-w-[48rem] xl:-translate-y-8 2xl:max-w-[52rem] 2xl:-translate-y-10">
@@ -192,13 +197,13 @@ export function Hero() {
               }
               className="relative mx-auto w-full max-w-[36rem] lg:ml-auto lg:mr-0 lg:max-w-[39rem] xl:max-w-[44rem] 2xl:max-w-[48rem]"
             >
-              <div className="hero-spotlight-glow" />
+              <div className="hero-spotlight-glow -z-10" />
               <div className="absolute inset-x-[12%] bottom-[8%] h-16 rounded-full bg-white/8 blur-3xl dark:bg-white/6" />
               <img
                 src={currentSlide.imageSrc}
                 alt=""
                 aria-hidden="true"
-                className="hero-floating-produce relative w-full object-contain"
+                className="hero-floating-produce relative z-10 w-full object-contain"
                 loading="eager"
                 decoding="async"
                 fetchPriority={activeSlideIndex === 0 ? 'high' : 'auto'}

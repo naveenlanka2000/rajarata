@@ -200,7 +200,9 @@ export function Footer({ page = 'home' }: FooterProps) {
         </div>
         <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-slate-500 dark:text-white/50">(c) {new Date().getFullYear()} Rajarata Plantation Export (Pvt) Ltd. All rights reserved.</p>
-          <p className="text-xs text-slate-500 dark:text-white/50">Made with Vite + React + Tailwind.</p>
+          <p className="text-[10px] tracking-[0.08em] text-slate-400 sm:text-right dark:text-white/35">
+            Made by N.L Kandananaarachchi
+          </p>
         </div>
       </div>
     </footer>
